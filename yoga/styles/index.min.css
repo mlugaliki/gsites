@@ -1,0 +1,156 @@
+.img-fluid {
+  width: 100%;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.container {
+  max-width: 480px;
+  margin: 0 auto;
+  background-color: white;
+}
+
+.item-cover {
+  background-color: #eeeeee;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #eeeeee;
+}
+
+.top-header {
+  position: relative;
+  background: #673AB7;
+}
+
+.header {
+  padding: 40px 16px 16px 24px;
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+}
+
+.header-more {
+  padding: 24px 8px 16px 16px;
+}
+
+.more {
+  width: 56px;
+  float: right;
+  cursor: pointer;
+  padding: 16px;
+}
+
+.banner {
+  padding: 16px;
+}
+
+.banner-img-container {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.1);
+  background-color: white;
+}
+.banner-img-container img {
+  background-color: white;
+}
+
+.lesson-title {
+  padding: 20px;
+  font-weight: bold;
+  color: #404040;
+}
+
+.items {
+  padding: 16px;
+}
+.items a {
+  text-decoration: none;
+  color: #333;
+  background-color: #FEFEFE;
+}
+.items .item {
+  font-size: 14px;
+  padding: 16px;
+  border-radius: 5px;
+  border: 1px solid #eeeeee;
+  margin-bottom: 8px;
+}
+.items .item:hover {
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
+}
+.items .item img {
+  border-radius: 8px;
+  width: 100%;
+}
+.items .item span {
+  display: block;
+}
+.items .item span.title {
+  font-size: 14px;
+  color: #404040;
+  padding: 8px 0 0 0;
+}
+.items .item .action {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.items .item .img-icon {
+  width: 24px;
+}
+
+.back-top-container {
+  padding: 0 16px 24px 16px;
+}
+
+.back-top {
+  width: 100%;
+  padding: 16px;
+  background-color: #673AB7;
+  font-size: 14px;
+}
+
+.bottom-nav-margin-top {
+  margin-bottom: 48px;
+}
+
+.bottom-nav {
+  position: fixed;
+  background-color: white;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 48px;
+  z-index: 9;
+  border-top: 1px solid #EEEEEE;
+}
+.bottom-nav div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.bottom-nav div img {
+  margin-top: 5px;
+  width: 24px;
+  height: 24px;
+}
+
+.bottom-nav-has-icon-p {
+  margin-top: 0px;
+  font-size: 10px;
+  color: #4a4a4a;
+}
+
+.bottom-nav-no-icon-p {
+  font-size: 14px;
+  margin-top: 17px;
+  color: #4a4a4a;
+}
