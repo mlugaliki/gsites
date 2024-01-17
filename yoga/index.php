@@ -53,15 +53,19 @@
                         </div>
                     </a>
 
-                    <a class="pure-u-1-1 item j-item index-1566355727004313635 j-item-1566355727004313635"
-                        href="http://wap.wizlimited.com/v1/ptr/1p2dtZ2a6QHc6YDN/detail?gid=2">
-                        <img src="./img/day2_1.mp4.jpg" alt="cover" class="j-cover item-cover"
-                            style="height: 234px; width: 416px;">
-                        <div class="info">
-                            <span class="title">DAY 2: Spinal Movement &amp; Body Awareness</span>
-                        </div>
-                    </a>
-
+                    <?php
+                        include db.php;
+                        echo "Hello php guys";
+                        for ($i=0; $i<30; $i++){
+                            echo "<a class='pure-u-1-1 item j-item index-1566355727004313635 j-item-1566355727004313635' href='http://wap.wizlimited.com/v1/ptr/1p2dtZ2a6QHc6YDN/detail?gid=2'>";
+                        echo "<img src='./img/day2_1.mp4.jpg' alt='cover' class='j-cover item-cover' style='height: 234px; width: 416px;''>";
+                        echo "<div class='info'>";
+                        echo "<span class='title'>DAY 2: Spinal Movement &amp; Body Awareness</span>";
+                        echo "</div></a>";
+                        }
+                    ?>
+                    
+<!-- 
                     <a class="pure-u-1-1 item j-item index-1566356060141912843 j-item-1566356060141912843"
                         href="http://wap.wizlimited.com/v1/ptr/1p2dtZ2a6QHc6YDN/detail?gid=3">
                         <img src="./img/day3_1.mp4.jpg" alt="cover" class="j-cover item-cover"
@@ -312,7 +316,7 @@
                         <div class="info">
                             <span class="title">DAY 30: Relax &amp; Renew</span>
                         </div>
-                    </a>
+                    </a> -->
 
                 </div>
             </div>
