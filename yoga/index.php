@@ -26,7 +26,7 @@ include './videos.php';
                 style="background-color: rgb(103, 58, 183); height: 263.2px; margin-bottom: 112.8px;">
 
                 <?php
-                    $plan = htmlspecialchars($_GET["name"]);
+                    $plan = isset($_GET["name"]) ?  htmlspecialchars($_GET["name"]) : '30_day_yoga';
                     $video = new Videos();
                     $stmt = $video->getVideo($plan);
                     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
