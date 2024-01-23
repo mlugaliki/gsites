@@ -25,9 +25,8 @@
                         <img alt="back" class="ic-back"
                             src="img/ic_back.svg">
                         <span class="j-title">
-                            DAY - echo htmlspecialchars($_GET["fn_day"]);
-                            <?php $categoryId = htmlspecialchars($_GET["plan-id"]);
-                            ?>
+                            DAY - <?php echo htmlspecialchars($_GET["fn_day"]); ?>
+                            <?php $categoryId = htmlspecialchars($_GET["plan-id"]); ?>
                         </span>
                     </div>
                 </div>
