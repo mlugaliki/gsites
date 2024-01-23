@@ -39,7 +39,7 @@ class Videos{
        public function getVideoByCategoryId($planId){
         $database = new Database();
         $conn = $database->getConnection();
-        $sqlQuery = "SELECT id, category_id, item_name, image, video_url FROM vd_items WHERE category_id=:plan_id  ORDER BY item_name";
+        $sqlQuery = "SELECT id, category_id, item_name, image, video_url,duration FROM vd_items WHERE category_id=:plan_id  ORDER BY item_name";
         if($conn == null){
             echo ("<p>Invalid connection</p>");
         }

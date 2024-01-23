@@ -31,19 +31,19 @@ include './videos.php';
                     $stmt = $video->getVideo($plan);
                     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
                         extract($row);
-                        echo "<div class='pure-g'>"
-                            ."<div class='pure-u-1-1'>"
-                            ."    <div class='pure-g'>"
-                            ."        <div class='pure-u-3-4 header'>".$title."</div>"
-                            ."    </div>"
+                        echo "<div class='pure-g'><br/>"
+                            ."<div class='pure-u-1-1'><br/>"
+                            ."    <div class='pure-g'><br/>"
+                            ."        <div class='pure-u-3-4 header'>".$title."</div><br/>"
+                            ."    </div><br/>"
                             ."</div>"
 
-                            ."<div class='pure-u-1-1 banner'>"
-                            ."    <div class='j-banner-img-container banner-img-container' data-width='16' data-height='9'"
-                            ."        style='width: 448px; height: 252px;'>"
-                            ."        <img alt='img' class='img-fluid j-banner' src='".$image."'>"
-                            ."    </div>"
-                            ."</div>"
+                            ."<div class='pure-u-1-1 banner'><br/>"
+                            ."    <div class='j-banner-img-container banner-img-container' data-width='16' data-height='9'<br/>"
+                            ."        style='width: 448px; height: 252px;'><br/>"
+                            ."        <img alt='img' class='img-fluid j-banner' src='".$image."'><br/>"
+                            ."    </div><br/>"
+                            ."</div><br/>"
                         ."</div>";
                     }
                     
@@ -58,10 +58,10 @@ include './videos.php';
                         $stmt = $video->getVideoPlan($plan);
                         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
                             extract($row);
-                        echo "<a class='pure-u-1-1 item j-item index-1566354878722854015 j-item-1566354878722854015' href='view.php?plan-id=".$id."'>";
-                        echo "<img src='".$image ."' alt='cover' class='j-cover item-cover' style='height: 234px; width: 416px;'>";
-                        echo "<div class='info'>";
-                            echo "<span class='title'>".$category_name ."</span>";
+                        echo "<a class='pure-u-1-1 item j-item index-1566354878722854015 j-item-1566354878722854015' href='view.php?plan-id=".$id."'><br/>";
+                        echo "<img src='".$image ."' alt='cover' class='j-cover item-cover' style='height: 234px; width: 416px;'><br/>";
+                        echo "<div class='info'><br/>";
+                            echo "<span class='title'>".$category_name ."</span><br/>";
                         echo "</div></a>";
                         }
                 ?>
