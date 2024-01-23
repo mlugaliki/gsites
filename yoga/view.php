@@ -40,13 +40,13 @@
                         $stmt = $video->getVideoByCategoryId($categoryId);
                         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
                             extract($row);
-                           echo "<div class='img-container j-item-container'>"
-                            ."<video src='".$video_url."' poster='".$image."' class='j-video'></video>"
-                            ."<img src='img/ic_play.svg'  alt='video' class='icon-play j-play'>"
+                           echo "<div class='img-container j-item-container'><br/>"
+                            ."<video src='".$video_url."' poster='".$image."' class='j-video'></video><br/>"
+                            ."<img src='img/ic_play.svg'  alt='video' class='icon-play j-play'><br/>"
                         ."</div>"
-                        ."<div class='info'>"
-                        ."    <div class='title'>".$item_name."</div>"
-                        ."    <div class='desc'>DURATION: </div>"
+                        ."<div class='info'><br/>"
+                        ."    <div class='title'>".$item_name."</div><br/>"
+                        ."    <div class='desc'>DURATION:".$duration."</div><br/>"
                         ."</div>";
                         }
                 ?>
