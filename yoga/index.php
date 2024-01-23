@@ -55,7 +55,7 @@ include './videos.php';
                         $stmt = $video->getVideoPlan($plan);
                         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
                             extract($row);
-                        echo "<a class='pure-u-1-1 item j-item index-1566354878722854015 j-item-1566354878722854015' href='view.php?plan-id=".$fn_day."'><br/>";
+                        echo "<a class='pure-u-1-1 item j-item index-1566354878722854015 j-item-1566354878722854015' href='view.php?plan-id=".$id."'><br/>";
                         echo "<img src='".$image ."' alt='cover' class='j-cover item-cover' style='height: 234px; width: 416px;'><br/>";
                         echo "<div class='info'><br/>";
                             echo "<span class='title'>".$category_name ."</span><br/>";
