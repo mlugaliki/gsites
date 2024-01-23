@@ -29,15 +29,15 @@ include './videos.php';
                     $stmt = $video->getVideo($plan);
                     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
                         extract($row);
-                        echo "<div class='pure-g'><br/>"
-                            ."<div class='pure-u-1-1'><br/>"
-                            ."    <div class='pure-g'><br/>"
-                            ."        <div class='pure-u-3-4 header'>".$title."</div><br/>"
-                            ."    </div><br/>"
+                        echo "<div class='pure-g'>"
+                            ."<div class='pure-u-1-1'>"
+                            ."    <div class='pure-g'>"
+                            ."        <div class='pure-u-3-4 header'>".$title."</div>"
+                            ."    </div>"
                             ."</div>"
 
-                            ."<div class='pure-u-1-1 banner'><br/>"
-                            ."    <div class='j-banner-img-container banner-img-container' data-width='16' data-height='9' style='width: 448px; height: 252px;'><br/>"
+                            ."<div class='pure-u-1-1 banner'>"
+                            ."    <div class='j-banner-img-container banner-img-container' data-width='16' data-height='9' style='width: 448px; height: 252px;'>"
                             ."        <img alt='img' class='img-fluid j-banner' src='".$image."'/>"
                             ."    </div><br/>"
                             ."</div><br/>"

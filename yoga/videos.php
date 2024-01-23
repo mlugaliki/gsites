@@ -12,7 +12,7 @@ class Videos{
      public function getVideo($name){
         $database = new Database();
         $conn = $database->getConnection();
-        $sqlQuery = "SELECT id,video_name,image,title FROM video WHERE video_name=:video_name AND deleted_at IS NULL;";
+        $sqlQuery = "SELECT id,video_name,image,title FROM video WHERE video_name=:video_name AND deleted_at IS NULL ORDER BY id ASC;";
         if($conn == null){
             echo ("<p>Invalid connection</p>");
         }
@@ -26,7 +26,7 @@ class Videos{
     public function getVideoPlan($name){
         $database = new Database();
         $conn = $database->getConnection();
-        $sqlQuery = "SELECT vc.id, vc.category_name,vc.image,vc.video_id,v.video_name FROM vd_category vc INNER JOIN video v ON vc.video_id =v.id WHERE v.video_name=:video_name;";
+        $sqlQuery = "SELECT vc.id, vc.category_name,vc.image,vc.video_id,v.video_name FROM vd_category vc INNER JOIN video v ON vc.video_id =v.id WHERE v.video_name=:video_name ORDER BY fn_day ASC;";
         if($conn == null){
             echo ("<p>Invalid connection</p>");
         }
@@ -39,7 +39,7 @@ class Videos{
        public function getVideoByCategoryId($planId){
         $database = new Database();
         $conn = $database->getConnection();
-        $sqlQuery = "SELECT id, category_id, item_name, image, video_url,duration FROM vd_items WHERE category_id=:plan_id  ORDER BY item_name";
+        $sqlQuery = "SELECT id, category_id, item_name, image, video_url,duration FROM vd_items WHERE category_id=:plan_id ORDER BY ex_level ASC";
         if($conn == null){
             echo ("<p>Invalid connection</p>");
         }
