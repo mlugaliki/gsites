@@ -53,7 +53,6 @@ include './videos.php';
                 <?php
                         $video = new Videos();
                         $stmt = $video->getVideoPlan($plan);
-                        echo "Myplace is => ".$plan;
                         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
                             extract($row);
                         echo "<a class='pure-u-1-1 item j-item index-1566354878722854015 j-item-1566354878722854015' href='view.php?plan-id=".$fn_day."'><br/>";
