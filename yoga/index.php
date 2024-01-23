@@ -3,9 +3,7 @@ include './videos.php';
 ?>
 
 <!DOCTYPE html>
-<!-- saved from url=(0055)http://wap.wizlimited.com/v1/ptr/1p2dtZ2a6QHc6YDN/index -->
 <html lang="en">
-
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>The best fittness routine platform in Kenya</title>
@@ -39,9 +37,8 @@ include './videos.php';
                             ."</div>"
 
                             ."<div class='pure-u-1-1 banner'><br/>"
-                            ."    <div class='j-banner-img-container banner-img-container' data-width='16' data-height='9'<br/>"
-                            ."        style='width: 448px; height: 252px;'><br/>"
-                            ."        <img alt='img' class='img-fluid j-banner' src='".$image."'><br/>"
+                            ."    <div class='j-banner-img-container banner-img-container' data-width='16' data-height='9' style='width: 448px; height: 252px;'><br/>"
+                            ."        <img alt='img' class='img-fluid j-banner' src='".$image."'/>"
                             ."    </div><br/>"
                             ."</div><br/>"
                         ."</div>";
