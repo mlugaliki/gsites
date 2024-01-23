@@ -24,11 +24,13 @@ class Videos{
 
 
     public function getVideoPlan($name){
-                                echo "Myplace is => ".$plan;
+                                echo "Myplace is => ".$name;
 
         $database = new Database();
         $conn = $database->getConnection();
         $sqlQuery = "SELECT vc.id, vc.category_name,vc.image,vc.video_id,v.video_name,fn_day FROM vd_category vc INNER JOIN video v ON vc.video_id =v.id WHERE v.video_name=:name ORDER BY fn_day ASC";
+        echo $sqlQuery;
+        
         if($conn == null){
             echo ("<p>Invalid connection</p>");
         }
