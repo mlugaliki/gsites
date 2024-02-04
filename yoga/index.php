@@ -48,7 +48,7 @@ session_start();
             ?>
         </div>
 
-        <?php if(isset($_SESSION['phone']) && isset($_SESSION['name']) && isset($_SESSION['service'])) {?>
+        <?php if(isset($_SESSION['phone']) && isset($_SESSION['name']) && isset($_SESSION['service']) && strcmp($_SESSION['service'],$plan) ==0) {?>
         <div class="pure-u-1-1 lesson-title">The Plan</div>
         <?php
         }else{?>
