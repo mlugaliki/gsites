@@ -1,6 +1,8 @@
+<?php
+  include 'video/register.php';
+?>
 <!DOCTYPE html>
 <html lang="en" class=" ">
-
 <head>
   <!-- 
          * @Package: Alix Mobile App 
@@ -695,7 +697,9 @@
               <a class="img-wrap" href="video/index.php?name=30_day_yoga" data-caption="30 day Yoga challenge">
                 <img alt="image" class="z-depth-1" style="width: 100%;" src="/video/img/day13_1.mp4.jpg">
               </a>
+              <!-- <video class="img-wrap j-video" src="https://sites.guruhub.tech/day1/day1_1.mp4" poster="/video/img/day13_1.mp4.jpg"></video><img src="video/img/ic_play.svg"  alt="video" class="icon-play j-play"> -->
             </div>
+
             <div class="prod-info  boxed z-depth-1">
               <a href="ui-app-products-view.html">
                 <h5 class="title truncate">Yoga</h5>
@@ -706,7 +710,7 @@
               <div class='prod-options products'>
               </div>
               <div class="spacer-line"></div>
-              <span class="addtocart btn-small">Subscribe</span>
+              <span class="addtocart btn-small"><a href="register.php">Subscribe</a></span>
               <a class="addtocart btn-small" href="video/index.php?name=30_day_yoga">Start watching</a>
               <div class="spacer-line"></div>
             </div>
@@ -726,7 +730,7 @@
               <div class="spacer-line"></div>
               <div class="spacer-line"></div>
               <div class="spacer-line"></div>
-              <a href="#modal1939980856" class="addtocart btn-small z-depth-3 modal-trigger">Subscribe</a>
+              <a href="#subscribe-modal" class="addtocart btn-small z-depth-3 modal-trigger">Subscribe</a>
               <a class="addtocart btn-small" href="video/index.php?name=drumbell">Start watching</a>
               <div class="spacer-line"></div>
             </div>
@@ -772,17 +776,32 @@
 
           <!-- Modal Trigger -->
           <!-- Modal Structure -->
-          <div id="modal1939980856" class="modal fade" role="dialog">
+          <div id="subscribe-modal" class="modal fade" role="dialog" style="width: 50%; height: 50%;">
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title">Subscribe</h4>
               </div>
               <div class="modal-body">
-                <p>Some text in the modal.</p>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <form name="subscribe-drumbell" method="post" action="video/register.php">
+                  <div class="form-group row">
+                    <label for="customerName" class="col-sm-2 col-form-label">Name</label>
+                    <div class="col-sm-6">
+                      <input type="text" class="form-control-plaintext" id="customerName">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="phoneNumber" class="col-sm-2 col-form-label">Phone</label>
+                    <div class="col-sm-6 col-md-5">
+                      <input type="tel" class="form-control" id="phoneNumber" placeholder="phone">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <div class="col-sm-6 col-md-5">
+                      <button type="submit" class="addtocart btn-small z-depth-3 modal-trigge">Subscribe</button>
+                    </div>
+                  </div>
+                </form>
               </div>
             </div>
           </div>
