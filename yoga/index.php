@@ -1,5 +1,6 @@
 <?php
 include './videos.php';
+include './SubscriberService.php';
 session_start();
 ?>
 
@@ -44,11 +45,12 @@ session_start();
                     . "</div><br/>"
                     . "</div>";
             }
-
             ?>
         </div>
 
-        <?php if(isset($_SESSION['phone']) && isset($_SESSION['name']) && isset($_SESSION['service']) && strcmp($_SESSION['service'],$plan) ==0) {?>
+        <?php
+        if(isset($_SESSION['phone']) && isset($_SESSION['name']) && isset($_SESSION['service']) && strcmp($_SESSION['service'],$plan) ==0) {
+            ?>
         <div class="pure-u-1-1 lesson-title">The Plan</div>
         <?php
         }else{?>
@@ -90,26 +92,40 @@ session_start();
                     </table>
                 </div>
                 <?php
-                    if (!empty($_POST)) {
-                        $name = $_POST['name'];
-                        $phoneNumber = $_POST['phone'];
-                        $service = $_POST['service'];
+                    try {
+                        if (isset($_POST['name']) && isset($_POST['phone']) && isset( $_POST['service'])) {
+                            $name = $_POST['name'];
+                            $phoneNumber = $_POST['phone'];
+                            $service = $_POST['service'];
+                            $subscriber_service = new SubscriberService();
 
-                        $database = new Database();
-                        $conn = $database->getConnection();
-                        if ($conn == null) {
-                            echo("<p>Invalid connection</p>");
-                        }
-                        try {
-                            $stmt = $conn->prepare("INSERT INTO subscribers(subscriber_name,phone,service)VALUES(?,?,?)");
-                            $stmt->execute([$name, $phoneNumber, $service]);
+                            $stmt = $subscriber_service->getSubscriber($phoneNumber, $service);
+                            $phone_ = null;
+                            $service_ = null;
+                            $subscriber_name_ = null;
+
+                            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                                extract($row);
+                                if($phone != null && $service != null && $subscriber_name != null){
+                                    $phone_ = $phone;
+                                    $service_ = $service;
+                                    $subscriber_name_ = $subscriber_name;
+                                }
+                            }
+
+                            if($phone_ == null && $service_ == null && $subscriber_name_ == null){
+                                $subscriber_service->saveSubscriber($phoneNumber, $name, $service);
+                            }
+
+                            // Set session
                             $_SESSION['name'] = $name;
                             $_SESSION['phone'] = $phoneNumber;
                             $_SESSION['service'] = $service;
-                            header('Refresh: 1; url=index.php?name='.$plan);
-                        } catch (PDOException $exception) {
-                            echo "Database could not be connected: " . $exception->getMessage();
                         }
+                    }catch (Exception $ex){
+                        echo "Processing Exception: " . ex->getMessage();
+                    }finally{
+                        header('Refresh: 1; url=index.php?name='.$plan);
                     }
                 }
                 ?>
@@ -117,10 +133,8 @@ session_start();
         </div>
     </div>
 </div>
-
 <script src="./scripts/zepto.min.js"></script>
 <script src="./scripts/data.min.js"></script>
 <script src="./scripts/index.min.js"></script>
 </body>
-
 </html>
