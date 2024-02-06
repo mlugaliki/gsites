@@ -125,7 +125,9 @@ session_start();
                     }catch (Exception $ex){
                         echo "Processing Exception: " . $ex->getMessage();
                     }finally{
-                        header('Refresh: 1; url=index.php?name='.$plan);
+                        if (isset($_SESSION['phone']) && isset($_SESSION['name']) && isset($_SESSION['service'])) {
+                            header('Refresh: 1; url=index.php?name='.$plan);
+                        }
                     }
                 }
                 ?>
