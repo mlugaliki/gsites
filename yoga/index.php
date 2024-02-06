@@ -123,7 +123,7 @@ session_start();
                             $_SESSION['service'] = $service;
                         }
                     }catch (Exception $ex){
-                        echo "Processing Exception: " . ex->getMessage();
+                        echo "Processing Exception: " . $ex->getMessage();
                     }finally{
                         header('Refresh: 1; url=index.php?name='.$plan);
                     }
