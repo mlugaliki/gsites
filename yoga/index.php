@@ -8,17 +8,12 @@ session_start();
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>The best fittness routine platform in Kenya</title>
+    <title>The best fitness routine platform in Kenya</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
-    <link href="http://wap.wizlimited.com/assets/pages/portal/video/yoga/assets/img/ic_logo.png" rel="icon">
     <link href="./styles/pure-min.css" rel="stylesheet">
-    <link href="http://wap.wizlimited.com/assets/pages/portal/assets/manifest/46.json" rel="manifest">
     <link href="./styles/index.min.css" rel="stylesheet">
-    <link href="http://wap.wizlimited.com/assets/pages/portal/video/yoga/assets/img/ic_logo.png" rel="Shortcut Icon"
-          type="image/x-icon">
     <style type="text/css" src="styles/style.css"></style>
 </head>
-
 <body data-new-gr-c-s-check-loaded="14.1149.0" data-gr-ext-installed="" data-new-gr-c-s-loaded="14.1149.0">
 <div class="container">
     <div class="pure-g">
