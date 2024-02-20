@@ -1,4 +1,4 @@
--- gsites.video definition
+-- gsites.app definition
 
 CREATE TABLE `video` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
