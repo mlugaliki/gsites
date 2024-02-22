@@ -155,7 +155,8 @@
                   if(strcmp($status,"true") == 0){
                       echo "Great. We found your number";
                   }else{
-                      echo "Oooh noo We couldn't find your number. Please enter your number";
+                      echo "Oooh noo We couldn't find your number. Please enter your number\n";
+                      print_r($resp);
                   }
               }
           }
