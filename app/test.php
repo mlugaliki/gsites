@@ -28,6 +28,7 @@ if ($data != null && sizeof($data) > 0) {
     $url = "https://uat-identity.safaricom.com/partner/api/v2/fetchMaskedMsisdn";
     $he = new HttpUtilClient($url, $headers);
     $data = $he->getMaskedNumber();
+    print_r($data);
     $heData = array();
     $heData['success'] = "true";
     if ($data != null) {
