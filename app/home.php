@@ -145,6 +145,21 @@
     <div class="spacer"></div>
     <div class="container">
       <div class="section">
+          <?php
+          include 'HEWebFlowClient.php';
+          $heClient = new HEWebFlowClient();
+          $resp = $heClient->checkMobileNumber();
+          if(!empty($resp)){
+              if (array_key_exists('success', $resp)){
+                  $status = $resp['success'];
+                  if(strcmp($status,"true") == 0){
+                      echo "Great. We found your number";
+                  }else{
+                      echo "Oooh noo We couldn't find your number. Please enter your number";
+                  }
+              }
+          }
+          ?>
         <div class="row ui-mediabox  prods prods-boxed equal-height ">
           <div class="col s6 ">
             <div class="prod-img-wrap">
