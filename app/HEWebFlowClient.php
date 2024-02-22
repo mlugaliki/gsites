@@ -29,12 +29,10 @@ class HEWebFlowClient
             ];
 
             $url = "https://uat-identity.safaricom.com/partner/api/v2/fetchMaskedMsisdn";
-
-
             $he = new HttpUtilClient($url, $headers);
             $data = $he->getMaskedNumber();
+            print_r($data);
             if ($data != null) {
-                $keyExists = array_key_exists('ServiceResponse', $data);
                 if (array_key_exists('ServiceResponse', $data)) {
                     $response = $data['ServiceResponse'];
                     if (array_key_exists('ResponseHeader', $response)) {
