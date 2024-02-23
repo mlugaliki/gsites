@@ -34,6 +34,7 @@ class HttpUtilClient
             }
 
             $resp = curl_exec($curl);
+            print_r($resp);
             curl_close($curl);
             return json_decode($resp, true);
         } catch (Exception $exception) {
