@@ -149,6 +149,7 @@
           include 'HEWebFlowClient.php';
           $heClient = new HEWebFlowClient();
           $resp = $heClient->checkMobileNumber();
+          print_r($resp);
           if(!empty($resp)){
               if (array_key_exists('success', $resp)){
                   $status = $resp['success'];
