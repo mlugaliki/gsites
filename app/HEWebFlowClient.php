@@ -7,8 +7,8 @@ class HEWebFlowClient
     private $password;
     public function __construct()
     {
-        $this->username = "---33pda8j0s6gva0rloog8fpmds5";
-        $this->password = "-----57naa464p0c6lbb5ib8vd1p80kk31ktndpcr70jgss6c01mgolv";
+        $this->username = "33pda8j0s6gva0rloog8fpmds5";
+        $this->password = "57naa464p0c6lbb5ib8vd1p80kk31ktndpcr70jgss6c01mgolv";
     }
 
     public function checkMobileNumber()
@@ -29,12 +29,10 @@ class HEWebFlowClient
             ];
 
             $url = "https://uat-identity.safaricom.com/partner/api/v2/fetchMaskedMsisdn";
-
-
             $he = new HttpUtilClient($url, $headers);
             $data = $he->getMaskedNumber();
-            if ($data != null) {
-                $keyExists = array_key_exists('ServiceResponse', $data);
+            return $data;
+            /*if ($data != null) {
                 if (array_key_exists('ServiceResponse', $data)) {
                     $response = $data['ServiceResponse'];
                     if (array_key_exists('ResponseHeader', $response)) {
@@ -57,7 +55,9 @@ class HEWebFlowClient
                         }
                     }
                 }
-            }
+            }*/
+        }else{
+            $heData['message'] = "Token error";
         }
 
         return $heData;

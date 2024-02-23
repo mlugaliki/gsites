@@ -149,13 +149,15 @@
           include 'HEWebFlowClient.php';
           $heClient = new HEWebFlowClient();
           $resp = $heClient->checkMobileNumber();
+          print_r($resp);
           if(!empty($resp)){
               if (array_key_exists('success', $resp)){
                   $status = $resp['success'];
                   if(strcmp($status,"true") == 0){
                       echo "Great. We found your number";
                   }else{
-                      echo "Oooh noo We couldn't find your number. Please enter your number";
+                      echo "Oooh noo We couldn't find your number. Please enter your number\n";
+                      print_r($resp);
                   }
               }
           }
