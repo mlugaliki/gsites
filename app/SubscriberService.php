@@ -1,6 +1,6 @@
 <?php
-
-class subscriberService
+include 'db.php';
+class SubscriberService
 {
 
     public function __construct()
@@ -59,7 +59,7 @@ class subscriberService
 
         // Send the request
         $response = curl_exec($ch);
-        // Check for errors
+        echo $response;
         if ($response === FALSE) {
             die(curl_error($ch));
         }

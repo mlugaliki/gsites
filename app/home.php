@@ -1,5 +1,5 @@
 <?php
-// test
+    include 'SubscriberService.php';
 ?>
 <!DOCTYPE html>
 <html lang="en" class=" ">
@@ -155,12 +155,16 @@
                   $status = $resp['success'];
                   if(strcmp($status,"true") == 0){
                       echo "Great. We found your number";
+                      $subscriberService = new SubscriberService();
+                      $subscriberService->getSubscriber($resp['msisdn'], 'Test');
+                      $subscriberService->sendActivationRequest($resp['msisdn'], '0909816765');
                   }else{
                       echo "Oooh noo We couldn't find your number. Please enter your number\n";
                       print_r($resp);
                   }
               }
           }
+
           ?>
         <div class="row ui-mediabox  prods prods-boxed equal-height ">
           <div class="col s6 ">
