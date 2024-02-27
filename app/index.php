@@ -95,7 +95,7 @@ echo session_id();
                             $service = $_POST['service'];
                             $subscriber_service = new subscriberService();
 
-                            $stmt = $subscriber_service->getSubscriber($phoneNumber, $service);
+                            $stmt = $subscriber_service->getSubscriberByService($phoneNumber, $service);
                             $phone_ = null;
                             $service_ = null;
                             $subscriber_name_ = null;
