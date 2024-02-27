@@ -1,7 +1,9 @@
 <?php
 include 'videoService.php';
-include 'subscriberService.php';
+include 'SubscriberService.php';
 session_start();
+session_id('PhoneValidation');
+echo session_id();
 ?>
 
 <!DOCTYPE html>
