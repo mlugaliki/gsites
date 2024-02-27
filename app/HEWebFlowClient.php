@@ -14,7 +14,7 @@ class HEWebFlowClient
 
     public function checkMobileNumber()
     {
-        $sessionId = rand(100, 100000) + 1;
+        $sessionId = 632;//rand(100, 100000) + 1;
         $heData = array();
         $heData['success'] = "false";
         $token = $this->getToken();

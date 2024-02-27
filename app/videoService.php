@@ -17,7 +17,7 @@ class VideoService
     {
         $conn = $this->database->getConnection();
         try {
-            $sqlQuery = "SELECT id,video_name,image,title FROM video WHERE video_name=:video_name AND deleted_at IS NULL ORDER BY id ASC;";
+            $sqlQuery = "SELECT id,video_name,image,title,service_id FROM video WHERE video_name=:video_name AND deleted_at IS NULL ORDER BY id ASC;";
             if ($conn == null) {
                 echo("<p>Invalid connection</p>");
             }
@@ -97,5 +97,76 @@ class VideoService
         }
 
         return null;
+    }
+
+    public function showVideos($plan)
+    {
+        $videos = $this->getVideoPlan($plan);
+        $i = 1;
+        if ($videos != null) {
+            foreach ($videos as $video) {
+                if ($i == 1 || sizeof($videos) == 1) {
+                    echo "<div class='row ui-mediabox  prods prods-boxed equal-height'>";
+                }
+                echo "<div class='col-md-6 s6'>
+                                <div class='prod-img-wrap'>
+                                  <a class=img-wrap' href='view.php?plan-id=" . $video['id'] . "&&fn_day=" . $video['fn_day'] . "' data-caption='30 day Yoga challenge'>
+                                    <img alt='image' class='z-depth-1' style='width: 100%;' src='" . $video['image'] . "'>
+                                  </a>
+                                </div>
+                                <div class='prod-info  boxed z-depth-1'>
+                                  <a href='ui-app-products-view.html'>
+                                    <h5 class='title truncate'>" . $video['category_name'] . "</h5>
+                                  </a>    
+                                </div>
+                              </div>";
+                if ($i == 2 || sizeof($videos) == 1) {
+                    echo "<div class='spacer-xlarge'></div></div>";
+                    $i = 1;
+                } else {
+                    $i++;
+                }
+            }
+        } else {
+            echo "No data to display";
+        }
+    }
+
+    public function getSubscriberByService($msisdn, $service)
+    {
+        $conn = $this->database->getConnection();
+        try {
+            $sqlQuery = "SELECT id, subscriber_name, phone, service FROM subscribers WHERE phone=:phone AND service=:service";
+            if ($conn == null) {
+                echo("<p>Invalid connection</p>");
+            }
+
+            $stmt = $conn->prepare($sqlQuery);
+            $stmt->bindParam(":phone", $msisdn);
+            $stmt->bindParam(":service", $service);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (Exception $ex) {
+            echo $ex->getMessage();
+        } finally {
+            if ($conn != null) {
+                $this->database->CloseCon($conn);
+            }
+        }
+    }
+
+    public function saveSubscriber($msisdn, $name, $service)
+    {
+        $database = new Database();
+        $conn = $database->getConnection();
+        if ($conn == null) {
+            echo("<p>Invalid connection</p>");
+        }
+        try {
+            $stmt = $conn->prepare("INSERT INTO subscribers(subscriber_name,phone,service)VALUES(?,?,?)");
+            $stmt->execute([$name, $msisdn, $service]);
+        } catch (PDOException $exception) {
+            echo "Database could not be connected: " . $exception->getMessage();
+        }
     }
 }

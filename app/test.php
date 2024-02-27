@@ -7,10 +7,10 @@ $headers = ['Content-type: application/x-www-form-urlencoded',
     'Authorization: Basic MzNwZGE4ajBzNmd2YTBybG9vZzhmcG1kczU6NTduYWE0NjRwMGM2bGJiNWliOHZkMXA4MGtrMzFrdG5kcGNyNzBqZ3NzNmMwMW1nb2x2',
 ];
 
-echo base64_encode("33pda8j0s6gva0rloog8fpmds5:57naa464p0c6lbb5ib8vd1p80kk31ktndpcr70jgss6c01mgolv")."\n";
 $he = new HttpUtilClient($url, $headers);
 $data = $he->getToken();
 print_r($data);
+
 if ($data != null && sizeof($data) > 0) {
     // Get subscribers number
     $token = trim($data['access_token']);
