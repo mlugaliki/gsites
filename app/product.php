@@ -102,33 +102,35 @@ include 'SubscriberService.php';
     <div class="container">
         <div class="section">
             <?php
-            include 'HEWebFlowClient.php';
-            $heClient = new HEWebFlowClient();
-            $resp = $heClient->checkMobileNumber();
+            include 'HttpUtilClient.php';
+            $heClient = new HttpUtilClient();
+            $msisdn = "";
+            $payload = '{"serviceId":"' . $serviceId . '","msisdn":"' . $msisdn . '"}';
+            $resp = $heClient->getMaskedNumber($payload);
             print_r($resp);
             if (!empty($resp)) {
-                if (array_key_exists('success', $resp)) {
-                    $status = $resp['success'];
-                    if (strcmp($status, "true") == 0) {
+                if (array_key_exists('success', $resp) && $resp['success']) {
+                    $subscribed = $resp['subscribed'];
+                    $billed = $resp['billed'];
+                    if ($subscribed && $billed) {
                         echo "Great. We found your number";
-                        $subscriberService = new SubscriberService();
-                        $msisdn = $resp['msisdn'];
-                        $subs = $videoService->getSubscriberByService($msisdn, $plan);
-                        if (sizeof($subs) > 0) {
-                            foreach ($subs as $sub) {
-                                // Show video plans
-                                $videoService->showVideos($plan);
-                                // End of video plan
-                                break;
-                            }
-                        } else {
-                            // show form;
-                            $subscriberService->sendActivationRequest($msisdn, $serviceId);
-                        }
+                        // Show video plans
+                        $videoService->showVideos($plan);
+                        // End of video plan
+                        // show form;
+                        // $subscriberService->sendActivationRequest($msisdn, $serviceId);
                     } else {
+                        if (!$subscribed) {
+                            // show form
+                        }
+                        if (!$billed) {
+                            // Try billing
+                        }
                         echo "Oooh noo We couldn't find your number. Please enter your number\n";
                         print_r($resp);
                     }
+                } else {
+                    echo "Oooh noo We couldn't find your number, try again later\n";
                 }
             }
             ?>
