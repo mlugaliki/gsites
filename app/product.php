@@ -1,15 +1,11 @@
 <?php
-require 'videoService.php';
+include 'videoService.php';
+include 'SubscriberService.php';
 // require 'register.php';
 ?>
 <!DOCTYPE html>
 <html lang="en" class=" ">
 <head>
-    <!--
-           * @Package: Alix Mobile App
-           * @Author: themepassion
-           * @Version: 1.0
-          -->
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title>Guruhub WAP services</title>
@@ -58,9 +54,7 @@ require 'videoService.php';
     <link href="css/production.css"/>
 </head>
 <!-- END HEAD -->
-
 <!-- BEGIN BODY -->
-
 <body class="html" data-header="light" data-footer="light" data-header_align="app" data-menu_type="left"
       data-menu="light" data-menu_icons="on" data-footer_type="left" data-site_mode="light" data-footer_menu="show"
       data-footer_menu_style="light">
@@ -93,9 +87,11 @@ require 'videoService.php';
                         $plan = isset($_GET["name"]) ? htmlspecialchars($_GET["name"]) : '30_day_yoga';
                         $videoService = new VideoService();
                         $videoPlans = $videoService->getVideo($plan);
-                        foreach ($videoPlans as $vp){
-                            echo "<h6 class='title-area center' style='font-weight: bold; text-decoration: underline;text-transform: uppercase;'>".strtoupper(str_ireplace("_", " ", $vp['video_name']))."</h6>";
-                            echo "<p class='text-area center' style='font-weight: bold; text-decoration: underline;text-transform: uppercase;'>".$vp['title']."</p>";
+                        $serviceId = null;
+                        foreach ($videoPlans as $vp) {
+                            $serviceId = $vp['service_id'];
+                            echo "<h6 class='title-area center' style='font-weight: bold; text-decoration: underline;text-transform: uppercase;'>" . strtoupper(str_ireplace("_", " ", $vp['video_name'])) . "</h6>";
+                            echo "<p class='text-area center' style='font-weight: bold; text-decoration: underline;text-transform: uppercase;'>" . $vp['title'] . "</p>";
                         }
                         ?>
                     </div>
@@ -106,39 +102,39 @@ require 'videoService.php';
     <div class="container">
         <div class="section">
             <?php
-            $videos = $videoService->getVideoPlan($plan);
-            $i = 1;
-            if ($videos != null) {
-                foreach ($videos as $video) {
-                    if ($i == 1 || sizeof($videos) == 1) {
-                        echo "<div class='row ui-mediabox  prods prods-boxed equal-height'>";
-                    }
-                    echo "<div class='col-md-6 s6'>
-            <div class='prod-img-wrap'>
-              <a class=img-wrap' href='view.php?plan-id=" . $video['id'] . "&&fn_day=" . $video['fn_day'] . "' data-caption='30 day Yoga challenge'>
-                <img alt='image' class='z-depth-1' style='width: 100%;' src='" . $video['image'] . "'>
-              </a>
-            </div>
-            <div class='prod-info  boxed z-depth-1'>
-              <a href='ui-app-products-view.html'>
-                <h5 class='title truncate'>" . $video['category_name'] . "</h5>
-              </a>    
-            </div>
-          </div>";
-                    if ($i == 2 || sizeof($videos) == 1) {
-                        echo "<div class='spacer-xlarge'></div></div>";
-                        $i = 1;
+            include 'HttpUtilClient.php';
+            $heClient = new HttpUtilClient();
+            $msisdn = "";
+            $payload = '{"serviceId":"' . $serviceId . '","msisdn":"' . $msisdn . '"}';
+            $resp = $heClient->getMaskedNumber($payload);
+            print_r($resp);
+            if (!empty($resp)) {
+                if (array_key_exists('success', $resp) && $resp['success']) {
+                    $subscribed = $resp['subscribed'];
+                    $billed = $resp['billed'];
+                    if ($subscribed && $billed) {
+                        echo "Great. We found your number";
+                        // Show video plans
+                        $videoService->showVideos($plan);
+                        // End of video plan
+                        // show form;
+                        // $subscriberService->sendActivationRequest($msisdn, $serviceId);
                     } else {
-                        $i++;
+                        if (!$subscribed) {
+                            // show form
+                        }
+                        if (!$billed) {
+                            // Try billing
+                        }
+                        echo "Oooh noo We couldn't find your number. Please enter your number\n";
+                        print_r($resp);
                     }
+                } else {
+                    echo "Oooh noo We couldn't find your number, try again later\n";
                 }
-            } else {
-                echo "No data to display";
             }
             ?>
-
         </div>
-
         <!-- Footer -->
         <?php include './pages/footer.php'; ?>
     </div>

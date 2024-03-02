@@ -1,7 +1,9 @@
 <?php
 include 'videoService.php';
-include 'subscriberService.php';
+include 'SubscriberService.php';
 session_start();
+session_id('PhoneValidation');
+echo session_id();
 ?>
 
 <!DOCTYPE html>
@@ -93,7 +95,7 @@ session_start();
                             $service = $_POST['service'];
                             $subscriber_service = new subscriberService();
 
-                            $stmt = $subscriber_service->getSubscriber($phoneNumber, $service);
+                            $stmt = $subscriber_service->getSubscriberByService($phoneNumber, $service);
                             $phone_ = null;
                             $service_ = null;
                             $subscriber_name_ = null;
