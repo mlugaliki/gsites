@@ -4,7 +4,8 @@ class HttpUtilClient
 {
     public function getMaskedNumber($payload)
     {
-        $url = "http://159.65.208.160:8480/vasmasta/he/find-number";
+        //$url = "http://159.65.208.160:8480/vasmasta/he/find-number";
+        $url = "http://127.0.0.1:8080/vasmasta/he/find-number";
         try
         {
             $curl = curl_init($url);
@@ -13,7 +14,7 @@ class HttpUtilClient
             curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
             curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
             $resp = curl_exec($curl);
-           // print_r($resp);
+           print_r($resp);
             curl_close($curl);
             return json_decode($resp, true);
         } catch (Exception $exception) {

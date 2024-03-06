@@ -52,6 +52,76 @@ include 'SubscriberService.php';
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="css/production.css"/>
+    <script src="modules/jquery/jquery-2.2.4.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#show-videos").hide();
+            $("#test-videos").hide();
+            $.ajax({
+                url: 'http://127.0.0.1:8080/vasmasta/he/auth',
+                context: document.body,
+                type: 'POST',
+                success: function (data, status, xhr) {
+                    callback(data);
+                },
+                error: function (jqXhr, textStatus, errorMessage) {
+                    console.log("Auth data " + errorMessage)
+                }
+            });
+
+            function callback(response) {
+                console.log(response.token);
+                console.log(response.verifyUrl);
+                if (response == null) {
+                    return;
+                }
+
+                $.ajax({
+                    url: response.verifyUrl,
+                    dataType: 'json',
+                    cors: false,
+                    contentType: 'application/json',
+                    secure: true,
+                    type: 'GET',
+                    headers: {
+                        "Accept-Language": "EN",
+                        "Content-type": "application/json; charset=utf-8",
+                        "Authorization": "Bearer " + response.token,
+                        "X-App": "he-partner",
+                        //"x-correlation-conversationid": response.sessionId.toString(),
+                        "X-MessageID": response.sessionId.toString(),
+                        "X-DeviceId": response.sessionId.toString(),
+                        //"X-DeviceToken": response.sessionId.toString(),
+                        "X-Version": response.sessionId.toString(),
+                        "X-Source-System": "he-partner"
+                    },
+                    success: function (data, status, xhr) {
+                        if(data.ServiceResponse.ResponseHeader.ResponseCode === '204'){
+                            console.log("Mobile number not found. Connect to safaricom network");
+                            console.log("Your mobile number is = "+data.ServiceResponse.ResponseBody.Response.Msisdn);
+                            $("#test-videos").show();
+                            $("#mobile1").text("123434535");
+                        }
+                        else if(data.ServiceResponse.ResponseHeader.ResponseCode === '200'){
+                            console.log("Mobile number found. Enjoy the service");
+                            console.log("Your mobile number is = "+data.ServiceResponse.ResponseBody.Response.Msisdn);
+                            $("#show-videos").show();
+                            $("#mobile").text(data.ServiceResponse.ResponseBody.Response.Msisdn);
+                        }else{
+                            console.log("Contact admin at support@guruhub.tech");
+                        }
+                        console.log(data);
+                        console.log(xhr);
+                        //callback(data);
+                    },
+                    error: function (jqXhr, textStatus, errorMessage) {
+                        console.log(errorMessage);
+                    }
+                });
+            }
+        });
+    </script>
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
@@ -101,39 +171,23 @@ include 'SubscriberService.php';
     </div>
     <div class="container">
         <div class="section">
+            <div id="test-videos" class='row ui-mediabox  prods prods-boxed equal-height'>
+                <div class='col-md-6 s6'>
+                    <div class='prod-img-wrap'>
+                        okokokook <h3 id="mobile1"></h3>
+                    </div>
+
+                    <p>This is a test message</p></div>
+            </div>
+            <div id="show-videos">
+                <h3 id="mobile"></h3>
             <?php
-            include 'HttpUtilClient.php';
-            $heClient = new HttpUtilClient();
-            $msisdn = "";
-            $payload = '{"serviceId":"' . $serviceId . '","msisdn":"' . $msisdn . '"}';
-            $resp = $heClient->getMaskedNumber($payload);
-            print_r($resp);
-            if (!empty($resp)) {
-                if (array_key_exists('success', $resp) && $resp['success']) {
-                    $subscribed = $resp['subscribed'];
-                    $billed = $resp['billed'];
-                    if ($subscribed && $billed) {
-                        echo "Great. We found your number";
-                        // Show video plans
-                        $videoService->showVideos($plan);
-                        // End of video plan
-                        // show form;
-                        // $subscriberService->sendActivationRequest($msisdn, $serviceId);
-                    } else {
-                        if (!$subscribed) {
-                            // show form
-                        }
-                        if (!$billed) {
-                            // Try billing
-                        }
-                        echo "Oooh noo We couldn't find your number. Please enter your number\n";
-                        print_r($resp);
-                    }
-                } else {
-                    echo "Oooh noo We couldn't find your number, try again later\n";
-                }
-            }
+                include 'HttpUtilClient.php';
+                $heClient = new HttpUtilClient();
+                $videoService->showVideos($plan);
+                // echo "Oooh noo We couldn't find your number, try again later\n";
             ?>
+            </div>
         </div>
         <!-- Footer -->
         <?php include './pages/footer.php'; ?>
