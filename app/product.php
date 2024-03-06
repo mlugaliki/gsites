@@ -59,7 +59,7 @@ include 'SubscriberService.php';
             $("#show-videos").hide();
             $("#test-videos").hide();
             $.ajax({
-                url: 'http://127.0.0.1:8080/vasmasta/he/auth',
+                url: 'https://api.guruhub.tech/vasmasta/he/auth',
                 context: document.body,
                 type: 'POST',
                 success: function (data, status, xhr) {
