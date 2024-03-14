@@ -118,8 +118,10 @@
                   }
                   echo "<div class='col-md-6 s6'>
             <div class='prod-img-wrap'>
-                <app src='" . $pv['video_url'] . "' poster='" . $pv['image'] . "' class='j-app'  style='width: 100%;'></app>
-                <img src='/app/img/ic_play.svg'  alt='app' class='icon-play j-play'>
+                <div class='item'>
+                        <video src='" . $pv['video_url'] . "' poster='" . $pv['image'] . "' class='j-video'  style='width: 100%;'></video>
+                        <img src='/app/img/ic_play.svg'  alt='video' class='icon-play j-play'/>
+                </div>
             </div>
             <div class='prod-info  boxed z-depth-1'>
                 <h5 class='title truncate'>" .$pv['item_name']."</h5>
@@ -201,5 +203,4 @@
       <script src="/app/scripts/data.min.js"></script>
       <script src="/app/scripts/detail.min.js"></script>
 </body>
-
 </html>
