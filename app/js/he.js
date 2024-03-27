@@ -80,12 +80,11 @@ $(document).ready(function () {
                 'password': response.scLab.password,
                 'grant_type': "client_credentials"
             }),
-            secure: true,
+            //secure: true,
             type: 'POST',
             headers: {
-                "Accept-Language": "EN",
-                "Content-type": "application/json; charset=utf-8",
-                "Accept": "application/json; charset=utf-8"
+                "Content-Type": "application/json",
+                "Accept": "application/json"
             },
             success: function (data, status, xhr) {
                 if (data.ServiceResponse.ResponseHeader.ResponseCode === '204') {
