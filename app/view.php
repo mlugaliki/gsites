@@ -140,7 +140,6 @@
           ?>
       </div>
     </div>
-
       <!-- Footer -->
       <?php include './pages/footer.php'; ?>
     </div>
