@@ -33,7 +33,6 @@ include 'SubscriberService.php';
 
     <!-- CORE CSS FRAMEWORK - START -->
     <link href="assets/css/preloader.css" type="text/css" rel="stylesheet" media="screen"/>
-
     <link href="modules/materialize/materialize.min.css" type="text/css" rel="stylesheet" media="screen"/>
     <link href="modules/fonts/mdi/appicon/appicon.css" type="text/css" rel="stylesheet" media="screen"/>
     <link href="modules/fonts/mdi/materialdesignicons.min.css" type="text/css" rel="stylesheet" media="screen"/>
@@ -44,9 +43,7 @@ include 'SubscriberService.php';
     <!-- OTHER SCRIPTS INCLUDED ON THIS PAGE - START -->
     <link href="modules/fancybox/jquery.fancybox.min.css" rel="stylesheet" type="text/css" media="screen"/>
     <!-- OTHER SCRIPTS INCLUDED ON THIS PAGE - END -->
-
     <!-- CORE CSS TEMPLATE - START -->
-
     <link href="assets/css/style.css" type="text/css" rel="stylesheet" media="screen" id="main-style"/>
     <!-- CORE CSS TEMPLATE - END -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
