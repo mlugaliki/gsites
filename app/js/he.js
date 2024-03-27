@@ -76,9 +76,9 @@ $(document).ready(function () {
             cors: false,
             contentType: 'application/json',
             data: JSON.stringify({
-                username: response.scLab.username,
-                password: response.scLab.password,
-                grant_type: "client_credentials"
+                "username": response.scLab.username,
+                "password": response.scLab.password,
+                "grant_type": "client_credentials"
             }),
             secure: true,
             type: 'POST',
