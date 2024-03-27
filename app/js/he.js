@@ -17,11 +17,12 @@ $(document).ready(function () {
     });
 
     function redirectCustomerRequest(scLab, response) {
-        console.log(scLab.redirectUrl);
-        console.log(scLab.consentUrl);
-        console.log(scLab.campaignId);
+        // console.log(scLab.redirectUrl);
+        // console.log(scLab.consentUrl);
+        // console.log(scLab.campaignId);
         $.ajax({
-            url: scLab.consentUrl,
+            // url: scLab.consentUrl,
+            url: '/app/HEWebFlowClient.php',
             dataType: 'json',
             cors: false,
             contentType: 'application/json',
@@ -67,11 +68,12 @@ $(document).ready(function () {
         if (response == null) {
             return;
         }
-        console.log(response.scLab.username);
-        console.log(response.scLab.password);
-        console.log(response.scLab.tokenUrl);
+        // console.log(response.scLab.username);
+        // console.log(response.scLab.password);
+        // console.log(response.scLab.tokenUrl);
         $.ajax({
-            url: response.scLab.tokenUrl,
+            //url: response.scLab.tokenUrl,
+            url: '/app/HEWebFlowClient.php',
             dataType: 'json',
             cors: false,
             contentType: 'application/json',
