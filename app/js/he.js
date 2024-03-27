@@ -95,9 +95,8 @@ $(document).ready(function () {
                     // $("#test-videos").show();
                     // $("#mobile").text("127636472464");
                     // $("#mobile1").text("123434535");
-                    redirectCustomerRequest(response.scLab, data);
+                    // redirectCustomerRequest(response.scLab, data);
                 } else if (data.ServiceResponse.ResponseHeader.ResponseCode === '200') {
-
                     console.log("Mobile number found. Enjoy the service");
                     console.log("Your mobile number is = ");
                 } else {
