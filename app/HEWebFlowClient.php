@@ -1,9 +1,14 @@
 <?php
 require_once('HttpUtilClient.php');
-
-$data = json_decode(file_get_contents('php://input'), true);
+#$data = json_decode(file_get_contents('php://input'), true);
+#$data = json_encode('{"username":"guruhub","password":"4x5d8q9j3p7n6v2b1t","grant_type":"client_credentials"}', false);
+$data = '{"username":"guruhub","password":"4x5d8q9j3p7n6v2b1t","grant_type":"client_credentials"}';
+#$data = file_get_contents('php://input');
+#print_r($data);
 $he = new HttpUtilClient();
-echo $he->getScienLabToken($data);
+#echo $data;
+$response = $he->getScienLabToken($data);
+echo json_encode($response);
 /*die("Hello world");
 class HEWebFlowClient
 {
