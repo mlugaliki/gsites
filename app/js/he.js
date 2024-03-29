@@ -89,19 +89,7 @@ $(document).ready(function () {
                 "Accept": "application/json"
             },
             success: function (data, status, xhr) {
-                if (data.ServiceResponse.ResponseHeader.ResponseCode === '204') {
-                    console.log("Mobile number not found. Connect to safaricom network");
-                    console.log("Your mobile number is = ");
-                    // $("#test-videos").show();
-                    // $("#mobile").text("127636472464");
-                    // $("#mobile1").text("123434535");
-                    // redirectCustomerRequest(response.scLab, data);
-                } else if (data.ServiceResponse.ResponseHeader.ResponseCode === '200') {
-                    console.log("Mobile number found. Enjoy the service");
-                    console.log("Your mobile number is = ");
-                } else {
-                    console.log("Contact admin at support@guruhub.tech");
-                }
+                console.log(data);
             },
             error: function (jqXhr, textStatus, errorMessage) {
                 console.log(errorMessage);
