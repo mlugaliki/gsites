@@ -17,17 +17,16 @@ $(document).ready(function () {
     });
 
     function redirectCustomerRequest(scLab, response) {
-        // console.log(scLab.redirectUrl);
-        // console.log(scLab.consentUrl);
-        // console.log(scLab.campaignId);
+        console.log(scLab.redirectUrl);
+        console.log(scLab.consentUrl);
+        console.log(scLab.campaignId);
         $.ajax({
-            // url: scLab.consentUrl,
-            url: '/app/HEWebFlowClient.php',
+            url: scLab.consentUrl,
             dataType: 'json',
             cors: false,
             contentType: 'application/json',
             data: JSON.stringify({
-                msisdn: "",
+                msisdn: "127636472464",
                 campaign_id: scLab.campaignId,
                 source_ip: $('#ip').val(),
                 requestid: this.getRequestId(),
@@ -68,11 +67,7 @@ $(document).ready(function () {
         if (response == null) {
             return;
         }
-        // console.log(response.scLab.username);
-        // console.log(response.scLab.password);
-        // console.log(response.scLab.tokenUrl);
         $.ajax({
-            //url: response.scLab.tokenUrl,
             url: '/app/HEWebFlowClient.php',
             dataType: 'json',
             cors: false,
@@ -82,7 +77,6 @@ $(document).ready(function () {
                 'password': response.scLab.password,
                 'grant_type': "client_credentials"
             }),
-            //secure: true,
             type: 'POST',
             headers: {
                 "Content-Type": "application/json",
@@ -90,10 +84,11 @@ $(document).ready(function () {
             },
             success: function (data, status, xhr) {
                 console.log(data);
+                redirectCustomerRequest(response.scLab, data)
             },
             error: function (jqXhr, textStatus, errorMessage) {
                 console.log(errorMessage);
-		console.log(jqXhr.responseText);
+		        console.log(jqXhr.responseText);
                 // $("#test-videos").show();
                 // $("#show-videos").show(); //TODO: Remove
                 // $("#mobile").text("127636472464");
