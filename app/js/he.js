@@ -93,6 +93,7 @@ $(document).ready(function () {
             },
             error: function (jqXhr, textStatus, errorMessage) {
                 console.log(errorMessage);
+		console.log(jqXhr.responseText);
                 // $("#test-videos").show();
                 // $("#show-videos").show(); //TODO: Remove
                 // $("#mobile").text("127636472464");
