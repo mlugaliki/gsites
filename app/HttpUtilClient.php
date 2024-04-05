@@ -61,9 +61,8 @@ class HttpUtilClient
                 curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
                 curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type: application/json', 'Accept: application/json', "Authorization: Bearer " . $token->access_token));
                 $resp = curl_exec($curl);
-                print_r($resp);
                 curl_close($curl);
-                return json_decode($resp, true);
+                return json_decode($resp);
             }
             return null;
         } catch (Exception $exception) {
