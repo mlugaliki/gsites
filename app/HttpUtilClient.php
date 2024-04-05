@@ -37,7 +37,7 @@ class HttpUtilClient
             return json_decode($resp, true);
         } catch (Exception $exception) {
             echo "Error message ->" . $exception->getMessage() . "->" . $exception->getTraceAsString();
-            return null;
+            return "Error message ->" . $exception->getMessage() . "->" . $exception->getTraceAsString();
         }
     }
 
@@ -59,7 +59,7 @@ class HttpUtilClient
             return json_decode($resp, true);
         } catch (Exception $exception) {
             echo "Error message ->" . $exception->getMessage() . "->" . $exception->getTraceAsString();
-            return null;
+            return "Error message ->" . $exception->getMessage() . "->" . $exception->getTraceAsString();
         }
     }
 
@@ -76,7 +76,7 @@ class HttpUtilClient
             return json_decode($resp);
         } catch (Exception $exception) {
             echo "Error message ->" . $exception->getMessage() . "->" . $exception->getTraceAsString();
-            return null;
+            return "Error message ->" . $exception->getMessage() . "->" . $exception->getTraceAsString();
         }
     }
 }
