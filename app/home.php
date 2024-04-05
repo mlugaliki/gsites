@@ -1,26 +1,14 @@
 <?php
 include 'SubscriberService.php';
-
-echo $_SERVER['HTTP_USER_AGENT'] . "\n\n";
-//$browser = get_browser(null, true);
-//print_r($browser);
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en" class=" ">
 <head>
-    <!--
-           * @Package: Alix Mobile App
-           * @Author: themepassion
-           * @Version: 1.0
-          -->
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title>Guruhub WAP services</title>
     <meta content="Guruhub WAP services" name="description"/>
     <meta content="GIL" name="author"/>
-
     <!-- App Icons -->
     <link rel="apple-touch-icon" sizes="57x57" href="/app/assets/images/icons/apple-icon-57x57.png"/>
     <link rel="apple-touch-icon" sizes="60x60" href="/app/assets/images/icons/apple-icon-60x60.png"/>
@@ -285,9 +273,9 @@ echo $_SERVER['HTTP_USER_AGENT'] . "\n\n";
     <script src="/app/modules/app/init.js"></script>
     <script src="/app/modules/app/settings.js"></script>
     <script src="/app/modules/app/scripts.js"></script>
+    <script src="/app/js/he.js"></script>
     <!-- END CORE TEMPLATE JS - END -->
     <script src="/app/assets/js/preloader.js"></script>
-    <script src="/app/js/he.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
             crossorigin="anonymous"></script>
