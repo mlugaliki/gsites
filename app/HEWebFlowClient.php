@@ -8,9 +8,9 @@ $data = '{"username":"guruhub","password":"4x5d8q9j3p7n6v2b1t","grant_type":"cli
 $he = new HttpUtilClient();
 #echo $data;
 //$response = $he->getScienLabToken($data);
-$he->getConsent('127636472464');
-if($he !=null && $he->cg_url != null){
-    header("Location: $he->cg_url");
+$response = $he->getConsent('127636472464');
+if($response !=null && $response->cg_url != null){
+    header("Location: $response->cg_url");
 }
 #echo json_encode($response);
 /*die("Hello world");
