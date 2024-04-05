@@ -34,7 +34,7 @@ class HttpUtilClient
             curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type: application/json','Accept: application/json'));
             $resp = curl_exec($curl);
             curl_close($curl);
-            return json_decode($resp, true);
+            return json_decode($resp);
         } catch (Exception $exception) {
             echo "Error message ->" . $exception->getMessage() . "->" . $exception->getTraceAsString();
             return null;
@@ -46,8 +46,8 @@ class HttpUtilClient
         try {
             $credential = $this->getCredentials();
 	    $data = '{"username":"'.$credential->scLab->username.'","password":"'.$credential->scLab->password.'","grant_type":"client_credentials"}';
-	    echo $data;
-            $token = $this->getScienLabToken(json_encode($data));
+            $data = '{"username":"guruhub","password":"4x5d8q9j3p7n6v2b1t","grant_type":"client_credentials"}';
+            $token = $this->getScienLabToken($data);
             if($token != null){
                 $consentData ='{"msisdn":"'.$msidn.'","campaign_id":"'.$credential->scLab->campaignId.'","source_ip":"'. $_SERVER['REMOTE_ADDR'].'","requestid":"19423647311041982037924554","user_agent":"'.$_SERVER['HTTP_USER_AGENT'].'","redirect_url":"'.$credential->scLab->redirectUrl.'"';
                 $curl = curl_init($credential->scLab->tokenUrl);
