@@ -45,7 +45,7 @@ class HttpUtilClient
     {
         try {
             $credential = $this->getCredentials();
-            printt_r($credential);
+            print_r($credential);
             $data = '{"username":"' . $credential->scLab->username . '","password":"' . $credential->scLab->password . '","grant_type":"client_credentials"}';
             $data = '{"username":"guruhub","password":"4x5d8q9j3p7n6v2b1t","grant_type":"client_credentials"}';
             $token = $this->getScienLabToken($data);
