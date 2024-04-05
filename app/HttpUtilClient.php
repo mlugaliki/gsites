@@ -50,7 +50,8 @@ class HttpUtilClient
             $data = '{"username":"guruhub","password":"4x5d8q9j3p7n6v2b1t","grant_type":"client_credentials"}';
             $token = $this->getScienLabToken($data);
             if ($token != null) {
-                $consentData = '{"msisdn":"' . $msidn . '","campaign_id":"' . $credential->scLab->campaignId . '","source_ip":"' . $_SERVER['REMOTE_ADDR'] . '","requestid":"19423647311041982037924554","user_agent":"' . $_SERVER['HTTP_USER_AGENT'] . '","redirect_url":"' . $credential->scLab->redirectUrl . '"';
+                // $consentData = '{"msisdn":"' . $msidn . '","campaign_id":"' . $credential->scLab->campaignId . '","source_ip":"' . $_SERVER['REMOTE_ADDR'] . '","requestid":"19423647311041982037924554","user_agent":"' . $_SERVER['HTTP_USER_AGENT'] . '","redirect_url":"' . $credential->scLab->redirectUrl . '"';
+                $consentData = '{"msisdn":"' . $msidn . '","campaign_id":"' . $credential->scLab->campaignId . '","source_ip":"127.0.0.1","requestid":"19423647311041982037924554","user_agent":"Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Mobile Safari/537.36","redirect_url":"' . $credential->scLab->redirectUrl . '"';
                 $curl = curl_init($credential->scLab->tokenUrl);
                 curl_setopt($curl, CURLOPT_POST, 1);
                 curl_setopt($curl, CURLOPT_POSTFIELDS, $consentData);
