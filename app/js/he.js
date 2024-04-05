@@ -17,9 +17,6 @@ $(document).ready(function () {
     });
 
     function redirectCustomerRequest(scLab, response) {
-        console.log(scLab.redirectUrl);
-        console.log(scLab.consentUrl);
-        console.log(scLab.campaignId);
         $.ajax({
             url: scLab.consentUrl,
             dataType: 'json',

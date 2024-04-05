@@ -7,7 +7,8 @@ $data = '{"username":"guruhub","password":"4x5d8q9j3p7n6v2b1t","grant_type":"cli
 #print_r($data);
 $he = new HttpUtilClient();
 #echo $data;
-$response = $he->getScienLabToken($data);
+//$response = $he->getScienLabToken($data);
+print_r($he->getConsent());
 #echo json_encode($response);
 /*die("Hello world");
 class HEWebFlowClient
