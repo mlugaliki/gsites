@@ -38,29 +38,17 @@ $(document).ready(function () {
                 "X-Source-System": "he-partner"
             },
             success: function (data, status, xhr) {
-                if(data.ServiceResponse.ResponseHeader.ResponseCode === '204'){
+                if (data.ServiceResponse.ResponseHeader.ResponseCode === '204') {
                     console.log("Mobile number not found. Connect to safaricom network");
-                    console.log("Your mobile number is = "+data.ServiceResponse.ResponseBody.Response.Msisdn);
-                    //$("#test-videos").show();
-                    $("#show-videos").show(); //TODO: Remove
-                    $("#mobile").text("127636472464");
-                    // $("#mobile1").text("123434535");
-                }
-                else if(data.ServiceResponse.ResponseHeader.ResponseCode === '200'){
+                } else if (data.ServiceResponse.ResponseHeader.ResponseCode === '200') {
                     console.log("Mobile number found. Enjoy the service");
-                    console.log("Your mobile number is = "+data.ServiceResponse.ResponseBody.Response.Msisdn);
-                    // $("#show-videos").show();
-                    // $("#mobile").text(data.ServiceResponse.ResponseBody.Response.Msisdn);
-                    window.location.href = "https://wap.guruhub.tech/app/home.php?sid="+data.ServiceResponse.ResponseBody.Response.Msisdn ;
-                }else{
+                    window.location.href = "https://wap.guruhub.tech/app/flow.php?sid=" + data.ServiceResponse.ResponseBody.Response.Msisdn;
+                } else {
                     console.log("Contact admin at support@guruhub.tech");
                 }
             },
             error: function (jqXhr, textStatus, errorMessage) {
                 console.log(errorMessage);
-                // $("#test-videos").show();
-                $("#show-videos").show(); //TODO: Remove
-                $("#mobile").text("127636472464");
             }
         });
     }
