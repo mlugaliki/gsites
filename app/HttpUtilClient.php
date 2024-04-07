@@ -23,9 +23,8 @@ class HttpUtilClient
     }
 
 
-    public function getScienLabToken($payload)
+    public function getScienLabToken($payload, $url)
     {
-        $url = "https://telco-staging-api.scienlabs.com/api/get_token";
         try {
             $curl = curl_init($url);
             curl_setopt($curl, CURLOPT_POST, 1);
@@ -45,16 +44,17 @@ class HttpUtilClient
     {
         try {
             $credential = $this->getCredentials();
-            $data = '{"username":"' . $credential->scLab->username . '","password":"' . $credential->scLab->password . '","grant_type":"client_credentials"}';
-            $data = '{"username":"guruhub","password":"4x5d8q9j3p7n6v2b1t","grant_type":"client_credentials"}';
+            $data = array("username" => $credential->scLab->username,
+                "password" => $credential->scLab->password,
+                "grant_type" => "client_credentials");
             $token = $this->getScienLabToken($data);
             if ($token != null) {
-                $consentData = array("msisdn"=>$msidn,
-                    "campaign_id"=>$credential->scLab->campaignId,
-                    "source_ip"=>$_SERVER['REMOTE_ADDR'],
-                    "requestid"=>uniqid(),
-                    "user_agent"=>$_SERVER['HTTP_USER_AGENT'],
-                    "redirect_url"=>$credential->scLab->redirectUrl);
+                $consentData = array("msisdn" => $msidn,
+                    "campaign_id" => $credential->scLab->campaignId,
+                    "source_ip" => $_SERVER['REMOTE_ADDR'],
+                    "requestid" => uniqid(),
+                    "user_agent" => $_SERVER['HTTP_USER_AGENT'],
+                    "redirect_url" => $credential->scLab->redirectUrl);
                 $curl = curl_init($credential->scLab->consentUrl);
                 curl_setopt($curl, CURLOPT_POST, 1);
                 curl_setopt($curl, CURLOPT_POSTFIELDS, urldecode(json_encode($consentData)));
