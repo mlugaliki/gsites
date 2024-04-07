@@ -20,7 +20,7 @@ $(document).ready(function () {
 
         $.ajax({
             url: response.verifyUrl,
-            dataType: 'json',
+            dataType: 'jsonp',
             cors: false,
             contentType: 'application/json',
             secure: true,
