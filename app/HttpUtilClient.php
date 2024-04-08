@@ -47,9 +47,9 @@ class HttpUtilClient
             $data = array("username" => $credential->scLab->username,
                 "password" => $credential->scLab->password,
                 "grant_type" => "client_credentials");
-            $token = $this->getScienLabToken($data, $credential->scLab->tokenUrl);
+            $token = $this->getScienLabToken(urldecode(json_encode($data)), $credential->scLab->tokenUrl);
             // print_r($token);
-            error_log($token,2,null, null);
+            // error_log($token,2,null, null);
             if ($token != null) {
                 $consentData = array("msisdn" => $msidn,
                     "campaign_id" => $credential->scLab->campaignId,

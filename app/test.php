@@ -22,6 +22,13 @@ if (!$billed) {
 }
 
 
+$credential = $he->getCredentials();
+$data = array("username" => $credential->scLab->username,
+    "password" => $credential->scLab->password,
+    "grant_type" => "client_credentials");
+$token = $this->getScienLabToken($data, $credential->scLab->tokenUrl);
+
+
 /*$heData = array();
 $heData['success'] = "true";
 if ($data != null) {
