@@ -141,8 +141,9 @@ include 'SubscriberService.php';
                     </div>
                     <div class="prod-info  boxed z-depth-1">
                         <a href="/app/ui-app-products-view.html">
-                            <h5 class="title truncate">Yoga<input type="hidden" id="ip" value="<?php echo $_SERVER['REMOTE_ADDR']; ?>"</input>
+                            <h5 class="title truncate">Yoga<input type="text" id="ip" value="<?php echo $_SERVER['REMOTE_ADDR']; ?>"</input>
                             </h5>
+                            <!--<input id="mobile1" type="text" value="1234"/>-->
                         </a>
                         <span class="small brand">30 day yoga challenge</span>
                         <div class="spacer-line"></div>
@@ -150,8 +151,14 @@ include 'SubscriberService.php';
                         <div class='prod-options products'>
                         </div>
                         <div class="spacer-line"></div>
-                        <span class="addtocart btn-small"><a href="/app/register.php">Subscribe</a></span>
-                        <a class="addtocart btn-small" href="/app/product.php?name=30_day_yoga">Start watching</a>
+                        <!--<span class="addtocart btn-small">-->
+                            <form method="get" action="/app/flow.php">
+                                <input type="hidden" name="name" value="30_day_yoga"/>
+                                <input type="hidden" name="sid" id="sid" value="12344"/>
+                                <input type="hidden" name="cid" id="sid" value="6613d4f2c7a8be175c74f6fa"/>
+                                <button class="addtocart btn-small subscribe" type="submit">Subscribe</button>
+                                <a class="addtocart btn-small" href="/app/product.php?name=30_day_yoga">Start watching</a>
+                            </form>
                         <div class="spacer-line"></div>
                     </div>
                 </div>
@@ -164,13 +171,18 @@ include 'SubscriberService.php';
                     </div>
                     <div class="prod-info  boxed z-depth-1">
                         <a href="#">
-                            <h5 class="title truncate">Drumbell</h5>
+                            <h5 class="title truncate">Dumbell</h5>
                         </a> <span class="small brand">30 day gym challenge</span>
                         <div class="spacer-line"></div>
                         <div class="spacer-line"></div>
                         <div class="spacer-line"></div>
-                        <a href="#subscribe-modal" class="addtocart btn-small z-depth-3 modal-trigger">Subscribe</a>
-                        <a class="addtocart btn-small" href="/app/product.php?name=drumbell">Start watching</a>
+                        <form method="get" action="/app/flow.php">
+                            <input type="hidden" name="name" value="30_day_yoga"/>
+                            <input type="hidden" name="sid" id="sid" value="12344"/>
+                            <input type="hidden" name="cid" id="sid" value="6613d4f2c7a8be175c74f6fa"/>
+                            <button class="addtocart btn-small subscribe" type="submit">Subscribe</button>
+                            <a class="addtocart btn-small" href="/app/product.php?name=30_day_yoga">Start watching</a>
+                        </form>
                         <div class="spacer-line"></div>
                     </div>
                 </div>

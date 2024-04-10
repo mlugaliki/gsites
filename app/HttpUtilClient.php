@@ -40,7 +40,7 @@ class HttpUtilClient
         }
     }
 
-    public function getConsent($msidn)
+    public function getConsent($msidn,$cid, $name)
     {
         try {
             $credential = $this->getCredentials();
@@ -52,11 +52,12 @@ class HttpUtilClient
             // error_log($token,2,null, null);
             if ($token != null) {
                 $consentData = array("msisdn" => $msidn,
-                    "campaign_id" => $credential->scLab->campaignId,
+                    //"campaign_id" => $credential->scLab->campaignId,
+                    "campaign_id" => $cid,
                     "source_ip" => $_SERVER['REMOTE_ADDR'],
                     "requestid" => uniqid(),
                     "user_agent" => $_SERVER['HTTP_USER_AGENT'],
-                    "redirect_url" => $credential->scLab->redirectUrl);
+                    "redirect_url" => $credential->scLab->redirectUrl."=".$name);
                 $curl = curl_init($credential->scLab->consentUrl);
                 curl_setopt($curl, CURLOPT_POST, 1);
                 curl_setopt($curl, CURLOPT_POSTFIELDS, urldecode(json_encode($consentData)));

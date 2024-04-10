@@ -115,7 +115,6 @@ include 'SubscriberService.php';
                 <div class="spacer-xlarge"></div>
             </div>
             <div id="show-videos">
-                <h3 id="mobile">127636472464</h3>
             <?php
                 include 'HttpUtilClient.php';
                 $heClient = new HttpUtilClient();
