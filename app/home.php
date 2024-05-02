@@ -46,7 +46,7 @@ include 'SubscriberService.php';
     <!-- CORE CSS TEMPLATE - END -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link href="/app/css/production.css"/>
+    <link href="/app/css/production.css" type="text/css" rel="stylesheet"/>
 </head>
 <body class="html" data-header="light" data-footer="light" data-header_align="app" data-menu_type="left"
       data-menu="light" data-menu_icons="on" data-footer_type="left" data-site_mode="light" data-footer_menu="show"
