@@ -1801,3 +1801,8 @@ hr {
     transform: translate(-50%, -50%);
     height: 50px;
 }
+.saf-error{
+    color: red;
+    font-size: 7px;
+    font-weight: bold;
+}

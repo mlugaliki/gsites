@@ -41,9 +41,9 @@ $(document).ready(function () {
             success: function (data, status, xhr) {
                 if (data.ServiceResponse.ResponseHeader.ResponseCode === '204') {
                     console.log("Mobile number not found. Connect to safaricom network");
+                    $(".saf-error").text("Mobile number not found. Connect to safaricom network");
                 } else if (data.ServiceResponse.ResponseHeader.ResponseCode === '200') {
                     console.log("Mobile number found. Enjoy the service");
-                    // window.location.href = "https://wap.guruhub.tech/app/home.php?sid=" + data.ServiceResponse.ResponseBody.Response.Msisdn;
                     $("#sid").val(data.ServiceResponse.ResponseBody.Response.Msisdn);
                 } else {
                     console.log("Contact admin at support@guruhub.tech");
@@ -51,7 +51,6 @@ $(document).ready(function () {
             },
             error: function (jqXhr, textStatus, errorMessage) {
                 console.log(errorMessage);
-                $("#mobile1").val(127636472464);
                 $("#sid").val("5432");
                 $('.subscribe').prop('disabled', false);
             }

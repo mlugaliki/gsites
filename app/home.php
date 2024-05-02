@@ -142,6 +142,7 @@ include 'SubscriberService.php';
                     <div class="prod-info  boxed z-depth-1">
                         <h5 class="title truncate">Yoga</h5>
                         <span class="small brand">30 day yoga challenge</span>
+                        <p class="small brand saf-error"></p>
                         <div class="spacer-line"></div>
                         <div class="spacer-line"></div>
                             <form method="get" action="/app/flow.php">
@@ -163,7 +164,9 @@ include 'SubscriberService.php';
                     <div class="prod-info  boxed z-depth-1">
                         <a href="#">
                             <h5 class="title truncate">Dumbbell</h5>
-                        </a> <span class="small brand">30 day gym challenge</span>
+                        </a>
+                        <span class="small brand">30 day gym challenge</span>
+                        <p class="small brand saf-error"></p>
                         <div class="spacer-line"></div>
                         <form method="get" action="/app/flow.php">
                             <input type="hidden" name="name" value="dumbbell"/>
