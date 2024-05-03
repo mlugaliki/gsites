@@ -44,7 +44,7 @@ class HttpUtilClient
     {
         try {
             $credential = $this->getCredentials();
-            error_log("GIL HE credentials -> ".$credential);
+            error_log("GIL HE credentials -> ".json_encode($credential));
             $data = array("username" => $credential->scLab->username,
                 "password" => $credential->scLab->password,
                 "grant_type" => "client_credentials");
