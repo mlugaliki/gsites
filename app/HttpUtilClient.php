@@ -48,6 +48,7 @@ class HttpUtilClient
                 "password" => $credential->scLab->password,
                 "grant_type" => "client_credentials");
             $token = $this->getScienLabToken(urldecode(json_encode($data)), $credential->scLab->tokenUrl);
+            error_log("Token " . json_encode($token));
             if ($token != null) {
                 $consentData = array("msisdn" => $msidn,
                     "campaign_id" => $cid,
@@ -55,7 +56,7 @@ class HttpUtilClient
                     "requestid" => uniqid(),
                     "user_agent" => $_SERVER['HTTP_USER_AGENT'],
                     "redirect_url" => $credential->scLab->redirectUrl . "=" . $name);
-                error_log("Consent request -> " . json_encode($consentData) .", Source IP ".$_SERVER['REMOTE_ADDR']);
+                error_log("Consent request -> " . json_encode($consentData) . ", Source IP " . $_SERVER['REMOTE_ADDR']);
                 $curl = curl_init($credential->scLab->consentUrl);
                 curl_setopt($curl, CURLOPT_POST, 1);
                 curl_setopt($curl, CURLOPT_POSTFIELDS, urldecode(json_encode($consentData)));
