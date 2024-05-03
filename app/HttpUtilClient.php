@@ -55,7 +55,7 @@ class HttpUtilClient
                     "requestid" => uniqid(),
                     "user_agent" => $_SERVER['HTTP_USER_AGENT'],
                     "redirect_url" => $credential->scLab->redirectUrl . "=" . $name);
-                error_log("Consent request -> " . $consentData);
+                error_log("Consent request -> " . json_encode($consentData) .", Source IP ".$_SERVER['REMOTE_ADDR']);
                 $curl = curl_init($credential->scLab->consentUrl);
                 curl_setopt($curl, CURLOPT_POST, 1);
                 curl_setopt($curl, CURLOPT_POSTFIELDS, urldecode(json_encode($consentData)));
