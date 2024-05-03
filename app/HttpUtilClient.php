@@ -40,7 +40,7 @@ class HttpUtilClient
         }
     }
 
-    public function getConsent($msidn,$cid, $name)
+    public function getConsent($msidn, $cid, $name)
     {
         try {
             $credential = $this->getCredentials();
@@ -48,16 +48,14 @@ class HttpUtilClient
                 "password" => $credential->scLab->password,
                 "grant_type" => "client_credentials");
             $token = $this->getScienLabToken(urldecode(json_encode($data)), $credential->scLab->tokenUrl);
-            // print_r($token);
-            // error_log($token,2,null, null);
             if ($token != null) {
                 $consentData = array("msisdn" => $msidn,
-                    //"campaign_id" => $credential->scLab->campaignId,
                     "campaign_id" => $cid,
                     "source_ip" => $_SERVER['REMOTE_ADDR'],
                     "requestid" => uniqid(),
                     "user_agent" => $_SERVER['HTTP_USER_AGENT'],
-                    "redirect_url" => $credential->scLab->redirectUrl."=".$name);
+                    "redirect_url" => $credential->scLab->redirectUrl . "=" . $name);
+                error_log("Consent request -> " . $consentData);
                 $curl = curl_init($credential->scLab->consentUrl);
                 curl_setopt($curl, CURLOPT_POST, 1);
                 curl_setopt($curl, CURLOPT_POSTFIELDS, urldecode(json_encode($consentData)));
@@ -65,11 +63,12 @@ class HttpUtilClient
                 curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type: application/json', 'Accept: application/json', "Authorization: Bearer " . $token->access_token));
                 $resp = curl_exec($curl);
                 curl_close($curl);
+                error_log("Consent response -> " . $resp);
                 return json_decode($resp);
             }
             return null;
         } catch (Exception $exception) {
-            echo "Error message ->" . $exception->getMessage() . "->" . $exception->getTraceAsString();
+            error_log("Error message ->" . $exception->getMessage() . "->" . $exception->getTraceAsString());
             return null;
         }
     }
