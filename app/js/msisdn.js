@@ -57,4 +57,13 @@ $(document).ready(function () {
             }
         });
     }
+
+    $.get('https://www.cloudflare.com/cdn-cgi/trace', function(data) {
+        data = data.trim().split('\n');
+        let ipData = data[2];
+        let ipDataString = ipData.split("=");
+        let ip = ipDataString[1];
+        $("#pid").val(ip);
+        console.log("Mobile IP->"+ip);
+    });
 });
