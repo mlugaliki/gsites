@@ -44,12 +44,12 @@ class HttpUtilClient
     {
         try {
             $credential = $this->getCredentials();
-            error_log("GIL HE credentials -> ".json_encode($credential));
+            //error_log("GIL HE credentials -> ".json_encode($credential));
             $data = array("username" => $credential->scLab->username,
                 "password" => $credential->scLab->password,
                 "grant_type" => "client_credentials");
             $token = $this->getScienLabToken(urldecode(json_encode($data)), $credential->scLab->tokenUrl);
-            error_log("ScienLab Token " . json_encode($token));
+            //error_log("ScienLab Token " . json_encode($token));
             if ($token != null) {
                 $consentData = array("msisdn" => $msidn,
                     "campaign_id" => $cid,
