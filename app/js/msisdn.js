@@ -45,14 +45,15 @@ $(document).ready(function () {
                 } else if (data.ServiceResponse.ResponseHeader.ResponseCode === '200') {
                     console.log("Mobile number found. Enjoy the service");
                     $("#sid").val(data.ServiceResponse.ResponseBody.Response.Msisdn);
+                    $('.subscribe').prop('disabled', false);
                 } else {
                     console.log("Contact admin at support@guruhub.tech");
                 }
             },
             error: function (jqXhr, textStatus, errorMessage) {
                 console.log(errorMessage);
-                $("#sid").val("5432");
-                $('.subscribe').prop('disabled', false);
+                console.log("Mobile number not found. Connect to safaricom network");
+                $(".saf-error").text("Mobile number not found. Connect to safaricom network");
             }
         });
     }
