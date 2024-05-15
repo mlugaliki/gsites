@@ -2,6 +2,7 @@
 
 class HttpUtilClient
 {
+    private int $test;
     public function getMaskedNumber($payload)
     {
         //$url = "http://159.65.208.160:8480/vasmasta/he/find-number";
