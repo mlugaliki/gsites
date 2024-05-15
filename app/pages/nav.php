@@ -31,7 +31,7 @@
     <!-- Menu Data Start-->
     <li class="lvl1">
         <div class="waves-effect index">
-        <a href="home.php">
+        <a href="home.php?ver&&">
             <i class="mdi mdi-home-outline"></i>
             <span class="title">Home</span></a>
         </div>

@@ -272,7 +272,7 @@ include 'SubscriberService.php';
     <script src="/app/modules/app/init.js"></script>
     <script src="/app/modules/app/settings.js"></script>
     <script src="/app/modules/app/scripts.js"></script>
-    <script src="/app/js/msisdn.js"></script>
+    <script src="/app/js/msisdn.js?ver"></script>
     <!-- END CORE TEMPLATE JS - END -->
     <script src="/app/assets/js/preloader.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"

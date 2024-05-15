@@ -13,19 +13,19 @@
         </a>
     </li>
     <li>
-        <a href="home.php">
+        <a href="home.php?ver&&">
         <i class="mdi mdi-home-outline"></i>
         <span>Home</span>
         </a>
     </li>
         <li>
-            <a href="home.php">
+            <a href="home.php?ver&&">
                 <i class="mdi mdi-flask-outline"></i>
                 <span>Elimu</span>
             </a>
         </li>
         <li>
-            <a href="home.php">
+            <a href="home.php?ver&&">
                 <i class="mdi mdi-view-dashboard"></i>
                 <span>Afri Stories</span>
             </a>

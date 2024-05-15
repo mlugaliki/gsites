@@ -67,7 +67,7 @@
                 <h6 class="white-text center">Oops! Some technical error noticed. Please try again.</h6>
                 <div class="spacer"></div>
                 <div class="spacer"></div>
-                <a href="home.php" class='waves-light btn-large bg-primary'> Go Back </a></div>
+                <a href="home.php?ver&&" class='waves-light btn-large bg-primary'> Go Back </a></div>
         </div>
     </div>
 </div><!--.content-area-->
