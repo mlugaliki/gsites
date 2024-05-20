@@ -179,7 +179,7 @@ include 'SubscriberService.php';
                         <div class="spacer-line"></div>
                     </div>
                 </div>
-                <div class="col s6 ">
+<!--                <div class="col s6 ">
                     <div class="prod-img-wrap">
                         <a class="img-wrap" href="#" data-fancybox="images"
                            data-caption="Women Sandals">
@@ -210,7 +210,7 @@ include 'SubscriberService.php';
                         <span class="addtocart btn-small">Subscribe</span>
                         <div class="spacer-line"></div>
                     </div>
-                </div>
+                </div>-->
             </div>
         </div>
         <!-- Footer -->
