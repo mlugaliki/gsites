@@ -148,7 +148,7 @@ include 'SubscriberService.php';
                             <form method="get" action="/app/flow.php">
                                 <input type="hidden" name="name" value="30_day_yoga"/>
                                 <input type="hidden" name="sid" class="sid" value=""/>
-                                <input type="hidden" name="cid" class="cid" value="6613d463c7a8be175c74f5ff"/>
+                                <input type="hidden" name="cid" class="cid" value="6613d4f2c7a8be175c74f6fa"/>
                                 <input type="hidden" name="pid" class="pid" value=""/>
                                 <button class="addtocart btn-small subscribe" type="submit">Subscribe</button>
                             </form>
@@ -172,7 +172,7 @@ include 'SubscriberService.php';
                         <form method="get" action="/app/flow.php">
                             <input type="hidden" name="name" value="dumbbell"/>
                             <input type="hidden" name="sid" class="sid" value=""/>
-                            <input type="hidden" name="cid" class="cid" value="6613d4f2c7a8be175c74f6fa"/>
+                            <input type="hidden" name="cid" class="cid" value="6613d463c7a8be175c74f5ff"/>
                             <input type="hidden" name="pid" class="pid" value=""/>
                             <button class="addtocart btn-small subscribe" type="submit">Subscribe</button>
                         </form>
