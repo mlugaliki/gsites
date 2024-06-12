@@ -37,9 +37,7 @@ include 'SubscriberService.php';
     <link href="modules/fonts/mdi/appicon/appicon.css" type="text/css" rel="stylesheet" media="screen"/>
     <link href="modules/fonts/mdi/materialdesignicons.min.css" type="text/css" rel="stylesheet" media="screen"/>
     <link href="modules/perfect-scrollbar/perfect-scrollbar.css" type="text/css" rel="stylesheet" media="screen"/>
-
     <!-- CORE CSS FRAMEWORK - END -->
-
     <!-- OTHER SCRIPTS INCLUDED ON THIS PAGE - START -->
     <link href="modules/fancybox/jquery.fancybox.min.css" rel="stylesheet" type="text/css" media="screen"/>
     <!-- OTHER SCRIPTS INCLUDED ON THIS PAGE - END -->
@@ -119,7 +117,6 @@ include 'SubscriberService.php';
                 include 'HttpUtilClient.php';
                 $heClient = new HttpUtilClient();
                 $videoService->showVideos($plan);
-                // echo "Oooh noo We couldn't find your number, try again later\n";
             ?>
             </div>
         </div>
@@ -188,5 +185,4 @@ include 'SubscriberService.php';
     <script src="/app/scripts/data.min.js"></script>
     <script src="/app/scripts/detail.min.js"></script>
 </body>
-
 </html>

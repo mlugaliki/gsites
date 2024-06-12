@@ -1,10 +1,10 @@
 <?php
 class Database
 {
-    private $host = "67.205.144.173";
+    private $host = "127.0.0.1";
     private $database_name = "gsites";
     private $username = "root";
-    private $password = "Zni9X55UVgFvhaXBruByL@!987-";
+    private $password = "password@2023";
     public $conn;
 
     public function getConnection()
@@ -14,7 +14,7 @@ class Database
             $this->conn = new PDO("mysql:host=" . $this->host . ";dbname=" . $this->database_name, $this->username, $this->password);
             $this->conn->exec("set names utf8");
         } catch (PDOException $exception) {
-            echo "Database could not be connected: " . $exception->getMessage();
+            error_log("Database could not be connected: " . $exception->getMessage());
         }
         return $this->conn;
     }
