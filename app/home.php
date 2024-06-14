@@ -47,6 +47,7 @@ include 'SubscriberService.php';
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="/app/css/production.css" type="text/css" rel="stylesheet"/>
+    <script async src="https://msrvt.net/et.js"></script>
 </head>
 <body class="html" data-header="light" data-footer="light" data-header_align="app" data-menu_type="left"
       data-menu="light" data-menu_icons="on" data-footer_type="left" data-site_mode="light" data-footer_menu="show"
@@ -150,7 +151,7 @@ include 'SubscriberService.php';
                                 <input type="hidden" name="sid" class="sid" value=""/>
                                 <input type="hidden" name="cid" class="cid" value="6613d4f2c7a8be175c74f6fa"/>
                                 <input type="hidden" name="pid" class="pid" value=""/>
-                                <button class="addtocart btn-small subscribe" type="submit">Subscribe</button>
+                                <button data-mndet class="addtocart btn-small subscribe" type="submit">Subscribe</button>
                             </form>
                         <div class="spacer-line"></div>
                     </div>
@@ -174,7 +175,7 @@ include 'SubscriberService.php';
                             <input type="hidden" name="sid" class="sid" value=""/>
                             <input type="hidden" name="cid" class="cid" value="6613d463c7a8be175c74f5ff"/>
                             <input type="hidden" name="pid" class="pid" value=""/>
-                            <button class="addtocart btn-small subscribe" type="submit">Subscribe</button>
+                            <button data-mndet class="addtocart btn-small subscribe" type="submit">Subscribe</button>
                         </form>
                         <div class="spacer-line"></div>
                     </div>
