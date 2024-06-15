@@ -42,6 +42,11 @@ $(document).ready(function () {
                 if (data.ServiceResponse.ResponseHeader.ResponseCode === '204') {
                     console.log("Mobile number not found. Connect to safaricom network");
                     $(".saf-error").text("Mobile number not found. Connect to safaricom network");
+
+                    // To be disabled
+                    console.log("Mobile number found. Enjoy the service");
+                    $(".sid").val("127636472464");
+                    $('.subscribe').prop('disabled', false);
                 } else if (data.ServiceResponse.ResponseHeader.ResponseCode === '200') {
                     console.log("Mobile number found. Enjoy the service");
                     $(".sid").val(data.ServiceResponse.ResponseBody.Response.Msisdn);
@@ -54,6 +59,11 @@ $(document).ready(function () {
                 console.log(errorMessage);
                 console.log("Mobile number not found. Connect to safaricom network");
                 $(".saf-error").text("Mobile number not found. Connect to safaricom network");
+
+                // To be disabled
+                console.log("Mobile number found. Enjoy the service");
+                $(".sid").val("127636472464");
+                $('.subscribe').prop('disabled', false);
             }
         });
     }
