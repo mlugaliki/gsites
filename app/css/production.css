@@ -1757,14 +1757,12 @@ hr {
 .clearfix:after {
     clear: both
 }
-
 .item {
     margin: 16px;
     border-radius: 8px;
     box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
-    z-index: 0;
+    /*width: 100%;*/
 }
-
 .item .img-container {
     border-radius: 8px;
     overflow: hidden;
@@ -1794,10 +1792,10 @@ hr {
 
 .icon-play {
     cursor: pointer;
-    max-width: 50px;
+    width: 50px;
     position: absolute;
-    left: 100px;
-    top: 100px;
+    left: 50%;
+    top: 40%;
     transform: translate(-50%, -50%);
     height: 50px;
 }

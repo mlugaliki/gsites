@@ -99,7 +99,7 @@ include 'SubscriberService.php';
     </div>
     <div class="container">
         <div class="section">
-            <div id="test-videos" class='row ui-mediabox  prods prods-boxed equal-height'>
+            <!--<div id="test-videos" class='row ui-mediabox  prods prods-boxed equal-height'>
                 <div class="col-md-6 s6">
                     <div class="prod-img-wrap">
                         <video src="https://sites.guruhub.tech/day1/day1_2.mp4" class="j-app" style="width: 100%;"></video>
@@ -111,7 +111,7 @@ include 'SubscriberService.php';
                     </div>
                 </div>
                 <div class="spacer-xlarge"></div>
-            </div>
+            </div>-->
             <div id="show-videos">
             <?php
                 include 'HttpUtilClient.php';

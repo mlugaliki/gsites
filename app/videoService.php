@@ -109,19 +109,20 @@ class VideoService
                     echo "<div class='row ui-mediabox  prods prods-boxed equal-height'>";
                 }
                 echo "<div class='col-md-6 s6'>
-                                <div class='prod-img-wrap'>
+                                <div class='prod-img-wrap boxed'>
                                   <a class=img-wrap' href='view.php?plan-id=" . $video['id'] . "&&fn_day=" . $video['fn_day'] . "' data-caption='30 day Yoga challenge'>
                                     <img alt='image' class='z-depth-1' style='width: 100%;' src='" . $video['image'] . "'>
                                   </a>
-                                </div>
-                                <div class='prod-info  boxed z-depth-1'>
+                                <div class='prod-info boxed'>
                                   <a href='ui-app-products-view.html'>
                                     <h5 class='title truncate'>" . $video['category_name'] . "</h5>
                                   </a>    
                                 </div>
+                                </div>
+                                
                               </div>";
                 if ($i == 2 || sizeof($videos) == 1) {
-                    echo "<div class='spacer-xlarge'></div></div>";
+                    echo "<div class='spacer-small'></div></div>";
                     $i = 1;
                 } else {
                     $i++;

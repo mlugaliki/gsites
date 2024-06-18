@@ -1,3 +1,22 @@
+function checkSubscription(msisdn) {
+    $.get({
+        url: 'https://api.guruhub.tech/vasmasta/api/check-subscription/' + msisdn,
+        dataType: 'json',
+        cors: false,
+        contentType: 'application/json',
+        //secure: true,
+        type: 'GET',
+        headers: {
+            "x-api-key": "9091",
+        }, success: function (data) {
+            console.log("Data =>" + data);
+        },
+        error: function (jqXhr, textStatus, errorMessage) {
+            console.log(errorMessage);
+        }
+    });
+}
+
 $(document).ready(function () {
     $("#show-videos").hide();
     $("#test-videos").hide();
@@ -42,15 +61,9 @@ $(document).ready(function () {
                 if (data.ServiceResponse.ResponseHeader.ResponseCode === '204') {
                     console.log("Mobile number not found. Connect to safaricom network");
                     $(".saf-error").text("Mobile number not found. Connect to safaricom network");
-
-                    // To be disabled
-                    console.log("Mobile number found. Enjoy the service");
-                    $(".sid").val("127636472464");
-                    $('.subscribe').prop('disabled', false);
                 } else if (data.ServiceResponse.ResponseHeader.ResponseCode === '200') {
                     console.log("Mobile number found. Enjoy the service");
                     $(".sid").val(data.ServiceResponse.ResponseBody.Response.Msisdn);
-                    $('.subscribe').prop('disabled', false);
                 } else {
                     console.log("Contact admin at support@guruhub.tech");
                 }
@@ -59,21 +72,16 @@ $(document).ready(function () {
                 console.log(errorMessage);
                 console.log("Mobile number not found. Connect to safaricom network");
                 $(".saf-error").text("Mobile number not found. Connect to safaricom network");
-
-                // To be disabled
-                console.log("Mobile number found. Enjoy the service");
-                $(".sid").val("127636472464");
-                $('.subscribe').prop('disabled', false);
             }
         });
     }
 
-    $.get('https://www.cloudflare.com/cdn-cgi/trace', function(data) {
+    $.get('https://www.cloudflare.com/cdn-cgi/trace', function (data) {
         data = data.trim().split('\n');
         let ipData = data[2];
         let ipDataString = ipData.split("=");
         let ip = ipDataString[1];
         $(".pid").val(ip);
-        console.log("Mobile IP->"+ip);
+        console.log("Mobile IP->" + ip);
     });
 });
