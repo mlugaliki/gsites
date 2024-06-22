@@ -89,6 +89,10 @@ class HttpUtilClient
             return null;
         }
     }
+
+    public function getConsent2($sid, $ipAddress, $msisdn)
+    {
+    }
 }
 
 

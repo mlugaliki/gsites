@@ -1,22 +1,3 @@
-function checkSubscription(msisdn) {
-    $.get({
-        url: 'https://api.guruhub.tech/vasmasta/api/check-subscription/' + msisdn,
-        dataType: 'json',
-        cors: false,
-        contentType: 'application/json',
-        //secure: true,
-        type: 'GET',
-        headers: {
-            "x-api-key": "9091",
-        }, success: function (data) {
-            console.log("Data =>" + data);
-        },
-        error: function (jqXhr, textStatus, errorMessage) {
-            console.log(errorMessage);
-        }
-    });
-}
-
 $(document).ready(function () {
     $("#show-videos").hide();
     $("#test-videos").hide();
@@ -50,11 +31,7 @@ $(document).ready(function () {
                 "Content-type": "application/json; charset=utf-8",
                 "Authorization": "Bearer " + response.token,
                 "X-App": "he-partner",
-                //"x-correlation-conversationid": response.sessionId.toString(),
                 "X-MessageID": response.sessionId.toString(),
-                //"X-DeviceId": response.sessionId.toString(),
-                //"X-DeviceToken": response.sessionId.toString(),
-                //"X-Version": response.sessionId.toString(),
                 "X-Source-System": "he-partner"
             },
             success: function (data, status, xhr) {
