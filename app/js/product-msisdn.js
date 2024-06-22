@@ -9,22 +9,22 @@ function checkSubscription(msisdn, subscriptionName) {
         headers: {
             "x-api-key": "9091",
         }, success: function (data, status, xhr) {
-            let jsonData = JSON.parse(data);
+            let jsonData = data.data;
             let subscribedService = null;
             for (let x = 0; x < jsonData.length; x++) {
-                if (jsonData[x].serviceName.localeCompare(subscriptionName)) {
+                if (jsonData[x].serviceName === subscriptionName) {
                     subscribedService = subscriptionName;
                     break;
                 }
             }
             if (subscribedService == null) {
-                getUserIp(msisdn);
+                getUserIp(msisdn, subscriptionName);
             } else {
-                let sessionId = localStorage.getItem(msisdn+"_"+subscriptionName);
-                if(sessionId == null){
-                    localStorage.setItem(msisdn+"_"+subscriptionName, subscriptionName);
-                }else{
-                    window.location.href = "https://wap.guruhub.tech/app/product.php?name=" + subscriptionName + "&&msisdn=" + msisdn + "&&ipAddress=" + ip + "check=1";
+                let sessionId = localStorage.getItem(msisdn + "_" + subscriptionName);
+                if (sessionId == null) {
+                    localStorage.setItem(msisdn + "_" + subscriptionName, subscriptionName);
+                } else {
+                    window.location.href = "https://wap.guruhub.tech/app/product.php?name=" + subscriptionName + "&&msisdn=" + msisdn + "&&ipAddress=" + "127.0.0.1" + "&&check=1";
                 }
             }
         },
@@ -53,17 +53,18 @@ function getUserIp(msisdn, name) {
 }
 
 $(document).ready(function () {
-        $.ajax({
-            url: 'https://api.guruhub.tech/vasmasta/he/auth',
-            context: document.body,
-            type: 'POST',
-            success: function (data, status, xhr) {
-                callback(data);
-            },
-            error: function (jqXhr, textStatus, errorMessage) {
-                console.log("Auth data " + errorMessage)
-            }
-        });
+    $.ajax({
+        url: 'https://api.guruhub.tech/vasmasta/he/auth',
+        context: document.body,
+        type: 'POST',
+        success: function (data, status, xhr) {
+            callback(data);
+        },
+        error: function (jqXhr, textStatus, errorMessage) {
+            console.log("Auth data " + errorMessage)
+        }
+    });
+
     function callback(response) {
         if (response == null) {
             return;
