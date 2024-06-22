@@ -170,4 +170,28 @@ class VideoService
             echo "Database could not be connected: " . $exception->getMessage();
         }
     }
+
+    public function getCampaignId($name)
+    {
+        $db = new Database();
+        $conn = $db->getConnection();
+        try {
+            $sqlQuery = "SELECT campaign_id FROM video WHERE video_name=:video_name AND deleted_at IS NULL ORDER BY id ASC;";
+            if ($conn == null) {
+                echo("<p>Invalid connection</p>");
+            }
+            $stmt = $conn->prepare($sqlQuery);
+            $stmt->bindParam(":video_name", $name);
+            $stmt->execute();
+            $video=  $stmt->fetchAll(PDO::FETCH_ASSOC);
+            foreach ($video as $vp) {
+                error_log("Video: " .$name ." found");
+                return $vp['campaign_id'];
+            }
+        } catch (Exception $ex) {
+            echo $ex->getMessage();
+        }
+
+        return null;
+    }
 }
