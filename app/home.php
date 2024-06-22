@@ -152,7 +152,6 @@ include 'SubscriberService.php';
                                 <input type="hidden" name="cid" class="cid" value="6613d4f2c7a8be175c74f6fa"/>
                                 <input type="hidden" name="pid" class="pid" value=""/>
                                 <button data-mndet class="addtocart btn-small subscribe" type="submit">Subscribe</button>
-                                <a href="http://wap.account.com/app/product.php?name=30_day_yoga" class="btn-small">Subscribe two</a>
                             </form>
                         <div class="spacer-line"></div>
                     </div>
