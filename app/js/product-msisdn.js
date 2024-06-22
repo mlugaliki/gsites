@@ -12,7 +12,7 @@ function checkSubscription(msisdn, subscriptionName) {
             let jsonData = JSON.parse(data);
             let subscribedService = null;
             for (let x = 0; x < jsonData.length; x++) {
-                if (jsonData[x].serviceName.equals(subscriptionName)) {
+                if (jsonData[x].serviceName.localeCompare(subscriptionName)) {
                     subscribedService = subscriptionName;
                     break;
                 }
@@ -23,8 +23,9 @@ function checkSubscription(msisdn, subscriptionName) {
                 let sessionId = localStorage.getItem(msisdn+"_"+subscriptionName);
                 if(sessionId == null){
                     localStorage.setItem(msisdn+"_"+subscriptionName, subscriptionName);
+                }else{
+                    window.location.href = "https://wap.guruhub.tech/app/product.php?name=" + subscriptionName + "&&msisdn=" + msisdn + "&&ipAddress=" + ip + "check=1";
                 }
-                window.location.href = "https://wap.guruhub.tech/app/product.php?name=" + name + "&&msisdn=" + msisdn + "&&ipAddress=" + ip + "check=1";
             }
         },
         error: function (jqXhr, textStatus, errorMessage) {
