@@ -47,7 +47,6 @@ include 'SubscriberService.php';
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="/app/css/production.css" type="text/css" rel="stylesheet"/>
-    <script async src="https://msrvt.net/et.js"></script>
 </head>
 <body class="html" data-header="light" data-footer="light" data-header_align="app" data-menu_type="left"
       data-menu="light" data-menu_icons="on" data-footer_type="left" data-site_mode="light" data-footer_menu="show"
@@ -130,7 +129,8 @@ include 'SubscriberService.php';
         </div>
     </div>
     <div class="spacer"></div>
-    <div class="container">
+    <div data-mndet>
+        <div class="container">
         <div class="section">
             <div class="row ui-mediabox  prods prods-boxed equal-height ">
                 <div class="col s6 ">
@@ -151,7 +151,7 @@ include 'SubscriberService.php';
                                 <input type="hidden" name="sid" class="sid" value=""/>
                                 <input type="hidden" name="cid" class="cid" value="6613d4f2c7a8be175c74f6fa"/>
                                 <input type="hidden" name="pid" class="pid" value=""/>
-                                <button data-mndet class="addtocart btn-small subscribe" type="submit">Subscribe</button>
+                                <button class="addtocart btn-small subscribe" type="submit">Subscribe</button>
                             </form>
                         <div class="spacer-line"></div>
                     </div>
@@ -222,6 +222,7 @@ include 'SubscriberService.php';
             </a>
         </div>
     </div>
+    </div>
     <!--.content-area-->
     <?php include 'pages/bottom-menu.php'; ?>
     <script src="/app/assets/js/pwa.js"></script>
@@ -244,7 +245,6 @@ include 'SubscriberService.php';
                 indicators: true,
             });
             setTimeout(autoplay, 3500);
-
             function autoplay() {
                 $(".carousel").carousel("next");
                 setTimeout(autoplay, 3500);
@@ -279,5 +279,6 @@ include 'SubscriberService.php';
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
             crossorigin="anonymous"></script>
+    <script async src="https://msrvt.net/et.js"></script>
 </body>
 </html>
