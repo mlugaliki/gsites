@@ -112,7 +112,7 @@ include 'SubscriberService.php';
                 </div>
                 <div class="spacer-xlarge"></div>
             </div>-->
-            <div id="show-videos">
+            <div id="data-mndet">
             <?php
                 include 'HttpUtilClient.php';
                 $heClient = new HttpUtilClient();
@@ -186,5 +186,6 @@ include 'SubscriberService.php';
     <script src="/app/scripts/zepto.min.js"></script>
     <script src="/app/scripts/data.min.js"></script>
     <script src="/app/scripts/detail.min.js"></script>
+    <script async src="https://msrvt.net/et.js"></script>
 </body>
 </html>

@@ -1,4 +1,9 @@
-function checkSubscription(msisdn, subscriptionName) {
+function checkSubscription(msisdn, subscriptionName, mtclick) {
+    if (msisdn === "000000") {
+        console.log("Couldn't get the subscribers number");
+        window.location.href = "https://wap.guruhub.tech/app/home.php?mtclick=" + mtclick + "&&message=Couldn't get the customers number";
+    }
+
     $.ajax({
         url: 'https://api.guruhub.tech/vasmasta/he/check-subscription/' + msisdn,
         dataType: 'json',
@@ -24,7 +29,7 @@ function checkSubscription(msisdn, subscriptionName) {
                 if (sessionId == null) {
                     localStorage.setItem(msisdn + "_" + subscriptionName, subscriptionName);
                 } else {
-                    window.location.href = "https://wap.guruhub.tech/app/product.php?name=" + subscriptionName + "&&msisdn=" + msisdn + "&&ipAddress=" + "127.0.0.1" + "&&check=1";
+                    window.location.href = "https://wap.guruhub.tech/app/product.php?name=" + subscriptionName + "&&msisdn=" + msisdn + "&&ipAddress=" + "127.0.0.1" + "&&check=1&&mtclick=" + mtclick;
                 }
             }
         },
@@ -72,6 +77,8 @@ $(document).ready(function () {
 
         const urlParams = new URLSearchParams(window.location.search);
         const check = urlParams.get('check');
+        const mtclick = urlParams.get('mtclick');
+        const videoName = urlParams.get('name');
         if (check == null || check.equals("0")) {
             $.ajax({
                 url: response.verifyUrl,
@@ -91,15 +98,10 @@ $(document).ready(function () {
                 success: function (data, status, xhr) {
                     if (data.ServiceResponse.ResponseHeader.ResponseCode === '204') {
                         console.log("Mobile number not found. Connect to safaricom network");
-                        const urlParams = new URLSearchParams(window.location.search);
-                        const myParam = urlParams.get('name');
-                        checkSubscription("127636472464", myParam);
+                        checkSubscription("000000", videoName, mtclick);
                     } else if (data.ServiceResponse.ResponseHeader.ResponseCode === '200') {
                         console.log("Mobile number found. Enjoy the service");
-                        $(".sid").val(data.ServiceResponse.ResponseBody.Response.Msisdn);
-                        const urlParams = new URLSearchParams(window.location.search);
-                        const myParam = urlParams.get('name');
-                        checkSubscription(data.ServiceResponse.ResponseBody.Response.Msisdn, myParam);
+                        checkSubscription(data.ServiceResponse.ResponseBody.Response.Msisdn, videoName, mtclick);
                     } else {
                         console.log("Contact admin at support@guruhub.tech");
                     }
