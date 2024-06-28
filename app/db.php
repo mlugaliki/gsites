@@ -4,7 +4,7 @@ class Database
     private $host = "127.0.0.1";
     private $database_name = "gsites";
     private $username = "root";
-    private $password = "root";
+    private $password = "Zni9X55UVgFvhaXBruByL@!987-";
     public $conn;
 
     public function getConnection()
