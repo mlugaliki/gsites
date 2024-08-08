@@ -81,6 +81,7 @@ include 'SubscriberService.php';
                             <i class="mdi mdi-speedometer"></i>
                         </div>
                         <?php
+                        $plan = isset($_GET["name"]) ? htmlspecialchars($_GET["name"]) : '30_day_yoga';
                         $videoService = new VideoService();
                         $videoPlans = $videoService->getVideo($plan);
                         $serviceId = null;
