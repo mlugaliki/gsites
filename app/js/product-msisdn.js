@@ -1,8 +1,25 @@
-function checkSubscription(msisdn, subscriptionName, mtclick) {
+function checkSubscription(msisdn, subscriptionName, mtclick, clickId) {
     if (msisdn === "000000") {
         console.log("Couldn't get the subscribers number");
         window.location.href = "https://wap.guruhub.tech/app/home.php?mtclick=" + mtclick + "&&message=Couldn't get the customers number";
     }
+
+    $.ajax({
+        url: 'https://api.guruhub.tech/vasmasta/he/campaigns',
+        type: 'POST',
+        cors: true,
+        contentType: 'application/json',
+        headers: {
+            "x-api-key": "9091",
+        },
+        data: JSON.stringify({"service": subscriptionName, "clickId": clickId, "msisdn": msisdn}),
+        success: function (data, status, xhr) {
+            console.log("successful");
+        },
+        error: function (jqXhr, textStatus, errorMessage) {
+            console.log(errorMessage);
+        }
+    });
 
     $.ajax({
         url: 'https://api.guruhub.tech/vasmasta/he/check-subscription/' + msisdn,
@@ -79,6 +96,7 @@ $(document).ready(function () {
         const check = urlParams.get('check');
         const mtclick = urlParams.get('mtclick');
         const videoName = urlParams.get('name');
+        const clickId = urlParams.get('click_id');
         if (check == null || check.equals("0")) {
             $.ajax({
                 url: response.verifyUrl,
@@ -98,10 +116,10 @@ $(document).ready(function () {
                 success: function (data, status, xhr) {
                     if (data.ServiceResponse.ResponseHeader.ResponseCode === '204') {
                         console.log("Mobile number not found. Connect to safaricom network");
-                        checkSubscription("000000", videoName, mtclick);
+                        checkSubscription("000000", videoName, mtclick, clickId);
                     } else if (data.ServiceResponse.ResponseHeader.ResponseCode === '200') {
                         console.log("Mobile number found. Enjoy the service");
-                        checkSubscription(data.ServiceResponse.ResponseBody.Response.Msisdn, videoName, mtclick);
+                        checkSubscription(data.ServiceResponse.ResponseBody.Response.Msisdn, videoName, mtclick, clickId);
                     } else {
                         console.log("Contact admin at support@guruhub.tech");
                     }
