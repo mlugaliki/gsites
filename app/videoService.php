@@ -26,7 +26,7 @@ class VideoService
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (Exception $ex) {
-            echo $ex->getMessage();
+            error_log("getVideo->".$ex->getMessage());
         } finally {
             if ($conn != null) {
                 $this->database->CloseCon($conn);
@@ -49,7 +49,7 @@ class VideoService
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (Exception $ex) {
-            echo $ex->getMessage();
+            error_log("getVideoPlanByDay->".$ex->getMessage());
         } finally {
             if ($conn != null) {
                 $this->database->CloseCon($conn);
@@ -70,7 +70,7 @@ class VideoService
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (Exception $ex) {
-            echo $ex->getMessage();
+            error_log("getVideoPlan->".$ex->getMessage());
         } finally {
             if ($conn != null) {
                 $this->database->CloseCon($conn);
@@ -91,7 +91,7 @@ class VideoService
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (Exception $ex) {
-            echo $ex->getMessage();
+            error_log("getVideoByCategoryId ->".$ex->getMessage());
         } finally {
             $this->database->CloseCon($conn);
         }
@@ -148,7 +148,7 @@ class VideoService
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (Exception $ex) {
-            echo $ex->getMessage();
+            error_log("Error getting subscriber service". $ex->getMessage());
         } finally {
             if ($conn != null) {
                 $this->database->CloseCon($conn);
@@ -167,7 +167,7 @@ class VideoService
             $stmt = $conn->prepare("INSERT INTO subscribers(subscriber_name,phone,service)VALUES(?,?,?)");
             $stmt->execute([$name, $msisdn, $service]);
         } catch (PDOException $exception) {
-            echo "Database could not be connected: " . $exception->getMessage();
+            error_log("Database could not be connected: " . $exception->getMessage());
         }
     }
 
@@ -189,9 +189,25 @@ class VideoService
                 return $vp['campaign_id'];
             }
         } catch (Exception $ex) {
-            echo $ex->getMessage();
+            error_log("Error getting campaignId -> ". $ex->getMessage());
         }
 
         return null;
+    }
+
+    public function saveMetaData($plan, $mtclick)
+    {
+        $db = new Database();
+        $conn = $db->getConnection();
+        try {
+            try {
+                $stmt = $conn->prepare("INSERT INTO campaign_metadata(mt_click_id, service_name)VALUES(?,?)");
+                $stmt->execute([$mtclick, $plan]);
+            } catch (PDOException $exception) {
+                error_log("Database could not be connected: -> " . $exception->getMessage());
+            }
+        } catch (Exception $ex) {
+            error_log("Error saving meta data, ".$ex->getMessage());
+        }
     }
 }

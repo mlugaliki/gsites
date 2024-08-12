@@ -82,8 +82,10 @@ include 'SubscriberService.php';
                         </div>
                         <?php
                         $plan = isset($_GET["name"]) ? htmlspecialchars($_GET["name"]) : '30_day_yoga';
+                        $mtclick = isset($_GET["mtclick"]) ? htmlspecialchars($_GET["mtclick"]) : null;
                         $videoService = new VideoService();
                         $videoPlans = $videoService->getVideo($plan);
+                        $videoService->saveMetaData($plan, $mtclick);
                         $serviceId = null;
                         foreach ($videoPlans as $vp) {
                             $serviceId = $vp['service_id'];
