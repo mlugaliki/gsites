@@ -21,7 +21,7 @@
 <li class="user-wrap">
     <div class="user-view row">
     <div class="col s9 infoarea">
-        <a href="ui-app-profile.html"><span class="name">Martin Lugaliki</span></a>
+        <a href="ui-app-profile.html"><span class="name">Guruhub Innovators Ltd</span></a>
         <a href="ui-app-profile.html"><span class="email">info@guruhub.tech</span></a>
     </div>
     </div>
@@ -79,17 +79,17 @@
         </a>
         </div>
     </li>
-    <li class="lvl1">
+   <!-- <li class="lvl1">
         <div class="waves-effect">
-        <a href="tel:+254726387742">
+        <a href="tel:+254774812586">
             <i class="mdi mdi-cellphone-basic"></i>
             <span class="title">Phone</span>
         </a>
         </div>
-    </li>
+    </li>-->
     <li class="lvl1">
         <div class="waves-effect">
-        <a href="sms:+254726387742">
+        <a href="sms:24697?&body=ball">
             <i class="mdi mdi-message-text-outline"></i>
             <span class="title">Message</span>
         </a>
