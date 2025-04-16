@@ -1,4 +1,4 @@
-function checkSubscription(msisdn, subscriptionName, mtclick, clickId, sourceId) {
+function checkSubscription(msisdn, subscriptionName, mtclick, clickId,sukiClickId, sourceId) {
     if (msisdn === "000000") {
         console.log("Couldn't get the subscribers number");
         window.location.href = "https://wap.guruhub.tech/app/home.php?mtclick=" + mtclick + "&&message=Couldn't get the customers number";
@@ -12,7 +12,7 @@ function checkSubscription(msisdn, subscriptionName, mtclick, clickId, sourceId)
         headers: {
             "x-api-key": "9091",
         },
-        data: JSON.stringify({"service": subscriptionName, "clickId": clickId, "msisdn": msisdn, "sourceId": sourceId}),
+        data: JSON.stringify({"service": subscriptionName, "clickId": clickId==null ? sukiClickId : clickId, "msisdn": msisdn, "sourceId": sourceId}),
         success: function (data, status, xhr) {
             console.log("successful");
         },
@@ -97,6 +97,7 @@ $(document).ready(function () {
         const mtclick = urlParams.get('mtclick');
         const videoName = urlParams.get('name');
         const clickId = urlParams.get('click_id');
+        const sukiClickId = urlParams.get('clickid');
         const sourceId = urlParams.get('source_id');
         if (check == null || check.equals("0")) {
             $.ajax({
@@ -121,6 +122,7 @@ $(document).ready(function () {
                     } else if (data.ServiceResponse.ResponseHeader.ResponseCode === '200') {
                         console.log("Mobile number found. Enjoy the service");
                         checkSubscription(data.ServiceResponse.ResponseBody.Response.Msisdn, videoName, mtclick, clickId, sourceId);
+                        checkSubscription(data.ServiceResponse.ResponseBody.Response.Msisdn, videoName, mtclick, clickId, sukiClickId);
                     } else {
                         console.log("Contact admin at support@guruhub.tech");
                     }
