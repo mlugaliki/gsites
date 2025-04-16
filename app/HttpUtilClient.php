@@ -31,11 +31,13 @@ class HttpUtilClient
             curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type: application/json', 'Accept: application/json'));
             $resp = curl_exec($curl);
             if (!$resp) {
+                error_log("Failed to get ScienLab token");
                 trigger_error(curl_error($curl));
             }
             curl_close($curl);
             return json_decode($resp);
         } catch (Exception $exception) {
+            error_log("Failed to get ScienLab token ". $exception->getMessage() . "->" . $exception->getTraceAsString());
             trigger_error("Error message ->" . $exception->getMessage() . "->" . $exception->getTraceAsString());
             return null;
         }
@@ -45,7 +47,7 @@ class HttpUtilClient
     {
         try {
             $credential = $this->getCredentials();
-            error_log("GIL HE credentials -> " . json_encode($credential));
+            // error_log("GIL HE credentials -> " . json_encode($credential));
             $data = array("username" => $credential->scLab->username,
                 "password" => $credential->scLab->password,
                 "grant_type" => "client_credentials");
@@ -66,6 +68,7 @@ class HttpUtilClient
                 curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type: application/json', 'Accept: application/json', "Authorization: Bearer " . $token->access_token));
                 $resp = curl_exec($curl);
                 if (!$resp) {
+                    error_log("ScienLab Error -> " . curl_error($curl));
                     trigger_error(curl_error($curl));
                 }
                 curl_close($curl);
