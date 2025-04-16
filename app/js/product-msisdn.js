@@ -1,4 +1,4 @@
-function checkSubscription(msisdn, subscriptionName, mtclick, clickId,sukiClickId, sourceId) {
+function checkSubscription(msisdn, subscriptionName, mtclick, clickId, sourceId,sukiClickId) {
     if (msisdn === "000000") {
         console.log("Couldn't get the subscribers number");
         window.location.href = "https://wap.guruhub.tech/app/home.php?mtclick=" + mtclick + "&&message=Couldn't get the customers number";
@@ -118,11 +118,10 @@ $(document).ready(function () {
                 success: function (data, status, xhr) {
                     if (data.ServiceResponse.ResponseHeader.ResponseCode === '204') {
                         console.log("Mobile number not found. Connect to safaricom network");
-                        checkSubscription("000000", videoName, mtclick, clickId, sourceId);
+                        checkSubscription("000000", videoName, mtclick, clickId, sourceId, sukiClickId);
                     } else if (data.ServiceResponse.ResponseHeader.ResponseCode === '200') {
                         console.log("Mobile number found. Enjoy the service");
-                        checkSubscription(data.ServiceResponse.ResponseBody.Response.Msisdn, videoName, mtclick, clickId, sourceId);
-                        checkSubscription(data.ServiceResponse.ResponseBody.Response.Msisdn, videoName, mtclick, clickId, sukiClickId);
+                        checkSubscription(data.ServiceResponse.ResponseBody.Response.Msisdn, videoName, mtclick, clickId, sourceId, sukiClickId);
                     } else {
                         console.log("Contact admin at support@guruhub.tech");
                     }
