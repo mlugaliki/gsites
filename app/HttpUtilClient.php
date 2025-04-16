@@ -30,10 +30,13 @@ class HttpUtilClient
             curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
             curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type: application/json', 'Accept: application/json'));
             $resp = curl_exec($curl);
+            if (!$resp) {
+                trigger_error(curl_error($curl));
+            }
             curl_close($curl);
             return json_decode($resp);
         } catch (Exception $exception) {
-            echo "Error message ->" . $exception->getMessage() . "->" . $exception->getTraceAsString();
+            trigger_error("Error message ->" . $exception->getMessage() . "->" . $exception->getTraceAsString());
             return null;
         }
     }
@@ -42,12 +45,12 @@ class HttpUtilClient
     {
         try {
             $credential = $this->getCredentials();
-            //error_log("GIL HE credentials -> ".json_encode($credential));
+            error_log("GIL HE credentials -> " . json_encode($credential));
             $data = array("username" => $credential->scLab->username,
                 "password" => $credential->scLab->password,
                 "grant_type" => "client_credentials");
             $token = $this->getScienLabToken(urldecode(json_encode($data)), $credential->scLab->tokenUrl);
-            //error_log("ScienLab Token " . json_encode($token));
+            error_log("ScienLab Token " . json_encode($token));
             if ($token != null) {
                 $consentData = array("msisdn" => $msidn,
                     "campaign_id" => $cid,
@@ -62,6 +65,9 @@ class HttpUtilClient
                 curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
                 curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type: application/json', 'Accept: application/json', "Authorization: Bearer " . $token->access_token));
                 $resp = curl_exec($curl);
+                if (!$resp) {
+                    trigger_error(curl_error($curl));
+                }
                 curl_close($curl);
                 error_log("Consent response -> " . $resp);
                 return json_decode($resp);
@@ -82,6 +88,9 @@ class HttpUtilClient
             curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
             curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type: application/json', 'Accept: application/json'));
             $resp = curl_exec($curl);
+            if (!$resp) {
+                trigger_error(curl_error($curl));
+            }
             curl_close($curl);
             return json_decode($resp);
         } catch (Exception $exception) {
