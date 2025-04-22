@@ -40,6 +40,7 @@ function checkSubscription(msisdn, subscriptionName, mtclick, clickId, sourceId,
                 }
             }
             if (subscribedService == null) {
+                // When subscription is not found, validate user IP
                 getUserIp(msisdn, subscriptionName);
             } else {
                 let sessionId = localStorage.getItem(msisdn + "_" + subscriptionName);
@@ -97,7 +98,7 @@ $(document).ready(function () {
         const mtclick = urlParams.get('mtclick');
         const videoName = urlParams.get('name');
         const clickId = urlParams.get('click_id');
-        const sukiClickId = urlParams.get('clickid');
+        const sukiClickId = urlParams.get('clickId');
         const sourceId = urlParams.get('source_id');
         if (check == null || check.equals("0")) {
             $.ajax({
