@@ -1,3 +1,4 @@
+import 'marketing.js'
 function checkSubscription(msisdn, subscriptionName, mtclick, clickId, sourceId,sukiClickId) {
     if (msisdn === "000000") {
         console.log("Couldn't get the subscribers number");

@@ -31,7 +31,7 @@ class HttpUtilClient
             curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type: application/json', 'Accept: application/json'));
             $resp = curl_exec($curl);
             if (!$resp) {
-                error_log("Failed to get ScienLab token");
+                error_log("Failed to get ScienLab token" . curl_error($curl));
                 trigger_error(curl_error($curl));
             }
             curl_close($curl);
@@ -52,15 +52,17 @@ class HttpUtilClient
                 "password" => $credential->scLab->password,
                 "grant_type" => "client_credentials");
             $token = $this->getScienLabToken(urldecode(json_encode($data)), $credential->scLab->tokenUrl);
-            error_log("ScienLab Token " . json_encode($token));
+            // error_log("\n\nScienLab Token " . json_encode($token));
             if ($token != null) {
+                error_log("\n\nChecking subscription with ScienLab ");
                 $consentData = array("msisdn" => $msidn,
                     "campaign_id" => $cid,
                     "source_ip" => $pid,
                     "requestid" => uniqid(),
                     "user_agent" => $_SERVER['HTTP_USER_AGENT'],
                     "redirect_url" => $credential->scLab->redirectUrl . "?name=" . $name);
-                error_log("Consent request -> " . json_encode($consentData) . ", Source IP " . $pid);
+                    
+                error_log("\n\nConsent request -> " . json_encode($consentData) . ", Source IP " . $pid);
                 $curl = curl_init($credential->scLab->consentUrl);
                 curl_setopt($curl, CURLOPT_POST, 1);
                 curl_setopt($curl, CURLOPT_POSTFIELDS, urldecode(json_encode($consentData)));
@@ -68,7 +70,7 @@ class HttpUtilClient
                 curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type: application/json', 'Accept: application/json', "Authorization: Bearer " . $token->access_token));
                 $resp = curl_exec($curl);
                 if (!$resp) {
-                    error_log("ScienLab Error -> " . curl_error($curl));
+                    error_log("\n\n\nScienLab Error -> " . curl_error($curl));
                     trigger_error(curl_error($curl));
                 }
                 curl_close($curl);

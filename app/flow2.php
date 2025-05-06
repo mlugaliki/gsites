@@ -10,13 +10,14 @@ $pid =  $_GET['ipAddress'];
 $videoService = new VideoService();
 $cid = $videoService->getCampaignId($name);
 
-error_log("Masked MSISDN =".$sid." Video plan =".$name." IP ".$pid ." CampaignId ".$cid);
+error_log("Masked MSISDN =".$sid." Video plan =".$name." IP ".$pid ." CampaignId ".$cid ."\n");
 if (isset($sid)) {
     $response = $he->getConsent($sid, $cid, $name, $pid);
-    error_log("Flow2 -> ScienLab ->" . json_encode($response));
+    echo json_encode($response);
+    /*error_log("\nFlow2 -> ScienLab ->" . json_encode($response));
     if ($response != null && $response->cg_url != null) {
         header("Location: $response->cg_url");
-    }
+    }*/
 } else {
     header("Location: https://wap.guruhub.tech/app/home.php");
 }
