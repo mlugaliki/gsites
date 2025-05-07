@@ -172,7 +172,7 @@ include 'SubscriberService.php';
     <script src="modules/app/init.js"></script>
     <script src="modules/app/settings.js"></script>
     <script src="modules/app/scripts.js"></script>
-    <!--<script src="/app/js/product-msisdn.js?ver"></script>-->
+    <script src="/app/js/product-msisdn.js?ver"></script>
 
     <!-- END CORE TEMPLATE JS - END -->
     <script src="assets/js/preloader.js"></script>
@@ -188,7 +188,5 @@ include 'SubscriberService.php';
     <script src="/app/scripts/data.min.js"></script>
     <script src="/app/scripts/detail.min.js"></script>
     <script async src="https://msrvt.net/et.js"></script>
-    <!--<script src="/app/js/marketing.js"></script>-->
-    <script src="/app/js/product-msisdn2.js"></script>
 </body>
 </html>
