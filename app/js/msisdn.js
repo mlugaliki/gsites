@@ -28,7 +28,7 @@ $(document).ready(function () {
             type: 'GET',
             headers: {
                 "Accept-Language": "EN",
-                "Content-type": "application/json; charset=utf-8",
+                "Content-type": "application/json",
                 "Authorization": "Bearer " + response.token,
                 "X-App": "he-partner",
                 "X-MessageID": response.sessionId.toString(),

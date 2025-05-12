@@ -23,31 +23,35 @@ validateRequest = async function () {
         msisdn,
         subscriptionName
       );
-
-      const savedCookie = localStorage.getItem(msisdn + "_" + subscriptionName);
-      if (subscriptionData != null || (savedCookie != null && savedCookie === "PENDING")) {
+      if (subscriptionData != null) {
         // redirect to the service.
+        const savedCookie = localStorage.getItem(
+          msisdn + "_" + subscriptionName
+        );
         if (savedCookie == null) {
           localStorage.setItem(msisdn + "_" + subscriptionName, "SUCCESS");
         }
       } else {
         const provider = "SUKI";
-        if (provider != null && provider === "SUKI") {
+        if (provider != null && provider.equals("SUKI")) {
           // go to SUKI
           try {
-            const url = "https://api.guruhub.tech/vasmasta/he/request-cg";
+            const url = "http://api.guruhub.tech/vasmasta/he/request-cg";
+            // const url = "http://wap1.guruhub.tech/app/flow2.php?name=30_day_yoga&&msisdn=3852691725&&ipAddress="+ip+"&&check=1";
             const request = new Request(url, {
               method: "POST",
-              //cors: false,
-              //mode: "no-cors",
+              cors: true,
+              contentType: "application/json",
               headers: {
                 "x-api-key": "9091",
                 "Content-Type": "application/json",
               },
               body: JSON.stringify({
+                service: subscriptionName,
+                clickId: clickId == null ? sukiClickId : clickId,
                 msisdn: msisdn,
-                sourceIp: ip,
-                userAgent: window.navigator.userAgent,
+                sourceId: sourceId,
+                mtclick: mtclick,
               }),
             });
 
@@ -68,7 +72,7 @@ validateRequest = async function () {
 
                 const cgUrl = data["cg_url"];
                 if (cgUrl != null) {
-                  localStorage.setItem(msisdn + "_" + subscriptionName, "PENDING");
+                  localStorage.setItem(msisdn + "start", "PENDING");
                   window.location.href = cgUrl;
                 }
               }
@@ -80,12 +84,13 @@ validateRequest = async function () {
           // go to ScienLab
           try {
             const url =
-              "https://wap.guruhub.tech/app/flow2.php?name=" +
+              "http://wap1.guruhub.tech/app/flow2.php?name=" +
               subscriptionName +
               "&&msisdn=" +
               msisdn +
               "&&ipAddress=" +
               ip;
+            // const url = "http://wap1.guruhub.tech/app/flow2.php?name=30_day_yoga&&msisdn=3852691725&&ipAddress="+ip+"&&check=1";
             const response = await fetch(url);
             if (response.ok) {
               const data = await response.json();
@@ -180,12 +185,16 @@ getCredentials = async function () {
 
 getUserIp = async function () {
   try {
-    const url = "https://api.ipify.org/?format=json";
-    const response = await fetch(url);
+    const url = "https://www.cloudflare.com/cdn-cgi/trace";
+    let response = await fetch(url);
     if (response.ok) {
-      const data = await response.json();
-      console.log(data);
-      return data?.ip;
+      let data = await response.text();
+      data = data.trim().split("\n");
+      let ipData = data[2];
+      let ipDataString = ipData.split("=");
+      let ip = ipDataString[1];
+      console.log("Mobile IP->" + ip + " => " + name);
+      return ip;
     }
   } catch (ex) {
     console.log("Auth data " + ex);
@@ -236,8 +245,8 @@ saveCampaign = async function (
     const url = "https://api.guruhub.tech/vasmasta/he/campaigns";
     const request = new Request(url, {
       method: "POST",
-      // cors: false,
-      // mode: "no-cors",
+      cors: true,
+      contentType: "application/json",
       headers: {
         "x-api-key": "9091",
         "Content-Type": "application/json",
