@@ -172,7 +172,7 @@ include 'SubscriberService.php';
     <script src="modules/app/init.js"></script>
     <script src="modules/app/settings.js"></script>
     <script src="modules/app/scripts.js"></script>
-    <script src="/app/js/product-msisdn.js"></script>
+    <script src="/app/js/product-msisdn2.js"></script>
 
     <!-- END CORE TEMPLATE JS - END -->
     <script src="assets/js/preloader.js"></script>

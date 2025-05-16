@@ -72,58 +72,23 @@ include 'SubscriberService.php';
                 <div class="col s12 pad-0">
                     <!--   Icon Section   -->
                     <div class="row">
-                        <div class="col s6 m6 l3">
-                            <div class="icon-block block z-depth-1">
-                                <div class="icon-area center primary-text">
-                                    <i class="mdi mdi-speedometer"></i>
-                                </div>
-                                <h6 class="title-area center">Light & Fast</h6>
+                        <div class="col s6 m6 l2">
+                            <div class="blog-info boxed z-depth-1">                           
                                 <p class="text-area center">
-                                    It is designed to be super fast and light in weight. It
-                                    speeds your development and helps smooth user interation.
+                                <p>Welcome to [Website Name] – Your Ultimate Home Fitness Hub! Transform your living space into a personal gym with our expert-guided workouts, tailored fitness plans, and top-notch equipment recommendations. Whether you're a beginner or a seasoned athlete, we’ve got everything you need to stay motivated, build strength, and achieve your goals—all from the comfort of home. Let’s get moving and make fitness a seamless part of your daily life!</p>
+                                </p>
+                            </div></br/></br/>
+                            <div class="blog-info boxed z-depth-1">                           
+                                <p class="text-area center">
+                                <p>Join our community of fitness enthusiasts and discover a world of resources designed to help you succeed. From yoga and strength training to cardio and flexibility, we offer a diverse range of programs to suit every preference. Plus, our user-friendly platform makes it easy to track your progress and stay accountable. Embrace the convenience of home workouts and unlock your full potential with [Website Name].</p>
+                                </p>
+                            </div></br/></br/>
+                            <div class="blog-info boxed z-depth-1">                           
+                                <p class="text-area center">
+                                <p>Ready to take the first step? Sign up today and gain access to exclusive content, personalized coaching, and a supportive community that will keep you inspired. Let’s embark on this fitness journey together and make your home the ultimate destination for health and wellness. Your dream body is just a click away!</p>
                                 </p>
                             </div>
                         </div>
-
-                        <div class="col s6 m6 l3">
-                            <div class="icon-block block z-depth-1">
-                                <div class="icon-area center primary-text">
-                                    <i class="mdi mdi-spotlight"></i>
-                                </div>
-                                <h6 class="title-area center">Creative</h6>
-                                <p class="text-area center">
-                                    By utilizing elements and principles of Material Design,
-                                    It is designed with unique set of features.
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="col s6 m6 l3">
-                            <div class="icon-block block z-depth-1">
-                                <div class="icon-area center primary-text">
-                                    <i class="mdi mdi-thumb-up-outline"></i>
-                                </div>
-                                <h6 class="title-area center">Quality Code</h6>
-                                <p class="text-area center">
-                                    It follows black box level coding standard. All the code
-                                    is well formatted, commented and ready to use.
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="col s6 m6 l3">
-                            <div class="icon-block block z-depth-1">
-                                <div class="icon-area center primary-text">
-                                    <i class="mdi mdi-lan"></i>
-                                </div>
-                                <h6 class="title-area center">Multi Purpose</h6>
-                                <p class="text-area center">
-                                    It can be customized and used for any niche. The vast
-                                    possibilities of this template makes it multi purpose.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -180,38 +145,6 @@ include 'SubscriberService.php';
                         <div class="spacer-line"></div>
                     </div>
                 </div>
-<!--                <div class="col s6 ">
-                    <div class="prod-img-wrap">
-                        <a class="img-wrap" href="#" data-fancybox="images"
-                           data-caption="Women Sandals">
-                            <img alt="image" class="z-depth-1" style="width: 100%;" src="img/edu.jpeg">
-                        </a>
-                    </div>
-                    <div class="prod-info  boxed z-depth-1">
-                        <a href="#">
-                            <h5 class="title truncate">Education</h5>
-                        </a> <span class="small brand">Coming soon</span>
-                        <div class="spacer-line"></div>
-                        <span class="addtocart btn-small">Subscribe</span>
-                        <div class="spacer-line"></div>
-                    </div>
-                </div>
-                <div class="col s6 ">
-                    <div class="prod-img-wrap">
-                        <a class="img-wrap" href="#" data-fancybox="images"
-                           data-caption="Modern Man Shoes">
-                            <img alt="image" class="z-depth-1" style="width: 100%;" src="img/commedy.jpeg">
-                        </a>
-                    </div>
-                    <div class="prod-info  boxed z-depth-1">
-                        <a href="#">
-                            <h5 class="title truncate">Commedy</h5>
-                        </a> <span class="small brand">Coming soon</span>
-                        <div class="spacer-line"></div>
-                        <span class="addtocart btn-small">Subscribe</span>
-                        <div class="spacer-line"></div>
-                    </div>
-                </div>-->
             </div>
         </div>
         <!-- Footer -->

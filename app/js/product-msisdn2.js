@@ -25,7 +25,7 @@ validateRequest = async function () {
       );
 
       const savedCookie = localStorage.getItem(msisdn + "_" + subscriptionName);
-      if (subscriptionData != null || (savedCookie != null && savedCookie === "PENDING")) {
+      if (subscriptionData != null || (savedCookie != null && savedCookie === "SUCCESS")) {
         // redirect to the service.
         if (savedCookie == null) {
           localStorage.setItem(msisdn + "_" + subscriptionName, "SUCCESS");
@@ -68,7 +68,7 @@ validateRequest = async function () {
 
                 const cgUrl = data["cg_url"];
                 if (cgUrl != null) {
-                  localStorage.setItem(msisdn + "_" + subscriptionName, "PENDING");
+                  localStorage.setItem(msisdn + "_" + subscriptionName, "SUCCESS");
                   window.location.href = cgUrl;
                 }
               }
